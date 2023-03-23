@@ -8,9 +8,9 @@ from PIL import Image
 
 #images
 img_home_01 = Image.open('images/cell_images.png')
-#img_EDA_01 = Image.open('C:/Users/User/Desktop/streamlit/images/EDA_01.png')
-#img_EDA_02 = Image.open('C:/Users/User/Desktop/streamlit/images/EDA_02.png')
-#img_EDA_03 = Image.open('C:/Users/User/Desktop/streamlit/images/EDA_03.png')
+img_EDA_01 = Image.open('images/EDA_01.png')
+img_EDA_02 = Image.open('images/EDA_02.png')
+img_EDA_03 = Image.open('images/EDA_03.png')
 
 Header = st.container()
 
@@ -34,9 +34,9 @@ if selected == 'Home':
 if selected == 'EDA':
     st.header('Exploratory Data Analysis')
     st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
- #   st.image(img_EDA_01, caption = 'img title')
- #   st.image(img_EDA_02, caption = 'img title')    
- #   st.image(img_EDA_03, caption = 'img title')  
+    st.image(img_EDA_01, caption = 'img title')
+    st.image(img_EDA_02, caption = 'img title')    
+    st.image(img_EDA_03, caption = 'img title')  
     
     
 if selected == 'Models':
