@@ -12,9 +12,8 @@ img_EDA_01 = Image.open('images/EDA_01.png')
 img_EDA_02 = Image.open('images/EDA_02.png')
 img_EDA_03 = Image.open('images/EDA_03.png')
 
+#Title of the Page
 Header = st.container()
-
-
 with Header:
     st.title('Automatic Blood Cell Recognition')
 
@@ -24,13 +23,13 @@ selected = option_menu(None, ["Home", "EDA", "Models", 'Analysis', 'Prediction',
     icons=["house-door", "droplet", "droplet", 'droplet', 'droplet', 'droplet', 'envelope'], 
     menu_icon="droplet", default_index=0, orientation="horizontal")
 
-
+#Section Home
 if selected == 'Home':
     st.header('Introduction')
     st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
     st.image(img_home_01, caption = 'img title')
     
-    
+#Section EDA    
 if selected == 'EDA':
     st.header('Exploratory Data Analysis')
     st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
@@ -38,23 +37,27 @@ if selected == 'EDA':
     st.image(img_EDA_02, caption = 'img title')    
     st.image(img_EDA_03, caption = 'img title')  
     
-    
+#Section Models     
 if selected == 'Models':
     st.header('Models')
     st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
 
+#Section Analysis
 if selected == 'Analysis':
     st.header('Analysis')
     st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
 
+#Section Prediction    
 if selected == 'Prediction':
     st.header('Prediction')
     st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
 
+#Section Perspectives    
 if selected == 'Perspectives':
     st.header('Perspectives')
     st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
-       
+
+#Section About    
 if selected == 'About':
     st.header('About')
     st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')    
