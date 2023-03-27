@@ -19,12 +19,12 @@ with Header:
 
 
 # horizontal menu
-selected = option_menu(None, ["Home", "EDA", "Modelisation", 'Prediction', 'Perspectives', 'About'], 
+selected = option_menu(None, ["Introduction", "EDA", "Modelisation", 'Prediction', 'Perspectives', 'About'], 
     icons=["house-door", "droplet", "droplet", 'droplet', 'droplet', 'envelope'], 
     menu_icon="droplet", default_index=0, orientation="horizontal")
 
 #Section Home
-if selected == 'Home':
+if selected == 'Introduction':
     st.header('Introduction')
     st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
     st.image(img_home_01, caption = 'img title')
