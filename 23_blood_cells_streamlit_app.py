@@ -19,7 +19,7 @@ with Header:
 
 
 # horizontal menu
-selected = option_menu(None, ["Home", "EDA", "Models", 'Analysis', 'Prediction', 'Perspectives', 'About'], 
+selected = option_menu(None, ["Home", "EDA", "Modelisation", 'Prediction', 'Perspectives', 'About'], 
     icons=["house-door", "droplet", "droplet", 'droplet', 'droplet', 'droplet', 'envelope'], 
     menu_icon="droplet", default_index=0, orientation="horizontal")
 
@@ -38,13 +38,8 @@ if selected == 'EDA':
     st.image(img_EDA_03, caption = 'img title')  
     
 #Section Models     
-if selected == 'Models':
-    st.header('Models')
-    st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
-
-#Section Analysis
-if selected == 'Analysis':
-    st.header('Analysis')
+if selected == 'Modelisation':
+    st.header('Modelisation')
     st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
 
 #Section Prediction    
