@@ -40,7 +40,7 @@ if selected == 'E.D.A.':
 #Section Models     
 if selected == 'Modelisation':
     st.header('Modelisation, first steps')
-    st.markdown('We started with four pretrained models ResNet50V2, VGG16, MobileNetV2 and Xception. Without notable image preprocessing and modification of layers or hyper parameters and the imbalanced dataset the resulting accuracies remained close to random (~12,5% F1). Also we faced memory errors working with the whole dataset of 52 000 images. ')
+    st.markdown('We started with four pretrained models ResNet50V2, VGG16, MobileNetV2 and Xception. Without notable image preprocessing, modification of layers or hyper parameters and the imbalanced dataset the resulting accuracies remained close to random (~12,5% F1). Also we faced memory errors working with the whole dataset of 52 000 images. ')
 
 #Section Prediction    
 if selected == 'Prediction':
