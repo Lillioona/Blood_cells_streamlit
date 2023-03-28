@@ -44,7 +44,8 @@ if selected == 'Modelisation':
     st.header('Subsample')
     st.markdown('To solve imbalance and memory issues a subsample was created. Regarding the class with the smallest occurrence (Basophil, n = 1598) a total number of 12784 images was extracted, where now every class was evenly represented. This was done using pandas methods groupby and sample. The subsample was given to every member of the group to stay comparable in modelisation.')
     st.header('Image Augmentation')
-    
+    st.markdown('Image augmentation can be usefull to train your model and prevent it from overfitting, but in this case it didn’t. The classical ImageDataGenerators resulted in continuously higher validation scores compared to training scores and long runtimes varying between a couple of hours up to an entire day to train a single model. Considering that blood cell images tend to be recorded in standardized environments with similar methodologies, it was hypothesized that too much data augmentation was decreasing performance of the model. Reducing the image augmentation to horizontal & vertical flips, as well as random rotations in the form of an augmentation layer combined with rethinking the layer architecture resulted in the first model hitting above an 80% F1 score. Regarding that the most important information of the image (the white blood cell to classify) tended to be in the center of the image, surrounded by non-essential red blood cells, it was hypothesized that center crop augmentation would be beneficial. It increased the F1 score to ~88%.')
+    st.header('Optimizations')
     
 #Section Prediction    
 if selected == 'Prediction':
