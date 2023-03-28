@@ -55,5 +55,5 @@ if selected == 'Perspectives':
 #Section About    
 if selected == 'About':
     st.header('Contributors')
-    st.write('Amritha Prasneh \n Elias xx \n Daniela Hummel \n Lilli Krizek')
+    st.write('Amritha Prasneh  \n Elias xx  \n Daniela Hummel  \n Lilli Krizek')
   
