@@ -55,7 +55,5 @@ if selected == 'Perspectives':
 #Section About    
 if selected == 'About':
     st.header('Contributors')
-    st.markdown('Amritha Prasneh')
-    st.markdown('Elias xx')    
-    st.markdown('Daniela Hummel')    
-    st.markdown('Lilli Krizek')    
+    st.markdown('Amritha Prasneh \n Elias xx \n Daniela Hummel \n Lilli Krizek')
+  
