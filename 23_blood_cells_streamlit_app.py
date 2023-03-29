@@ -5,7 +5,7 @@ from streamlit_option_menu import option_menu
 from os import listdir     
 from PIL import Image, ImageOps
 #import cv2
-#import tensorflow as tf
+import tensorflow as tf
 #from tensorflow.keras.models import load_model
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
 
