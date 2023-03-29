@@ -146,10 +146,11 @@ try:
             file_path = directory+file_type+'/'+file
             if(file != "Select from list"):
                 prediction(file_path)
-         """
+         
                                                    
-except:
-    st.error("error")
+        except:
+            st.error("error")
+            """
 #Section Perspectives    
 if selected == 'Perspectives':
     st.header('Perspectives')
