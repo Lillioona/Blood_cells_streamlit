@@ -1,5 +1,6 @@
 numpy
 opencv-python
+opencv-python-headless
 Pillow==9.4.0
 streamlit_option_menu==0.3.2
 tensorflow==2.12.0
