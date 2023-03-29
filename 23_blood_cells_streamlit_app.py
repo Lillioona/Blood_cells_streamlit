@@ -53,8 +53,11 @@ if selected == 'Modelisation':
     st.header('Modelisation')
     st.markdown('In the following we present the models obtaining the best prediction results:')
     st.subheader('ResNet50V2 as base model')
-    st.markdown('Image augmentation: horizontal & vertical flips, random rotations and center crop augmentation')
-    st.markdown('Layer architecture: global average pooling layer, no dropout layers, finishing with a flattened layer and a dense layer with a high number of units (before the output layer) ')
+    st.markdown(
+        """
+        - Image augmentation: horizontal & vertical flips, random rotations and center crop augmentation
+        - Layer architecture: global average pooling layer, no dropout layers, finishing with a flattened layer and a dense layer with a high number of units (before the output layer) 
+        """)
     st.markdown('F1-score: 91%')
     st.markdown('Fine-tuning:the last (5th) Conv-block was set to be trainable which resulted in over 15 million trainable parameters compared to the initial 164.568 parameters.') 
     st.markdown('F1-score: 91%')
