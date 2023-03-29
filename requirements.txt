@@ -3,5 +3,5 @@ streamlit
 opencv-python-headless==4.5.5.64
 Pillow==9.4.0
 streamlit_option_menu==0.3.2
-tensorflow
-tensorflow_intel
+ensorflow==2.8
+tensorflow-probability==0.16
