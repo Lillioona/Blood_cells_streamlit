@@ -118,7 +118,7 @@ if selected == 'Modelisation':
 #Section Prediction    
 if selected == 'Prediction':
     st.header('Prediction')
-    """
+
     st.subheader("Choose the model for prediction")
 try:
     model = st.selectbox("XXX", 
@@ -164,21 +164,9 @@ try:
                 prediction(file_path)
          
                                                    
-        except:
-            st.error("error")
-            """
-#Section Perspectives    
-if selected == 'Perspectives':
-    st.header('Perspectives')
-    st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
-
-#Section About    
-if selected == 'About':
-    st.header('About')
-    st.markdown('This mashine learning project was part of Datascientest International Class at University of Paris La Sorbonne.')
-    st.header('Contributors')
-    st.write('Amritha Prasneh  \n Elias Zitterbarth  \n Daniela Hummel  \n Lilli Krizek')
-            """
+#        except:
+#            st.error("error")
+         
 #Section Perspectives    
 if selected == 'Perspectives':
     st.header('Perspectives')
