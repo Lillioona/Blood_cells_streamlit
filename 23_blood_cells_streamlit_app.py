@@ -1,57 +1,16 @@
+import streamlit as st
 import numpy as np
 import pickle
-import streamlit as st
 from streamlit_option_menu import option_menu
-from os import listdir
-import cv2
-import numpy as np
+from os import listdir     
 from PIL import Image, ImageOps
+
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 
-
-def prediction(file):
-    if file is not None:
-            image_data = Image.open(file)
-            st.image(image_data, width=180)
- 
-            size = (360,360)    
-            image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
-            image = np.asarray(image)
-
-            img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-            #img_resize = (cv2.resize(img, dsize=(75, 75),    interpolation=cv2.INTER_CUBIC))/255
-
-            img_reshape = img[np.newaxis,...]
-            prediction = model.predict(img_reshape)
-
-            predicted_class = np.argmax(prediction)
-            #st.write(predicted_class)
-            true_classes_list = ['basophil',
-                                        'eosinophil',
-                                        'erythroblast',
-                                        'ig',
-                                        'lymphocyte',
-                                        'monocyte',
-                                        'neutrophil',
-                                        'platelet']
-            st.write('This image most likely belongs to ', true_classes_list[predicted_class])
-
-    
-def list_images(directory, file_type):
-    directory += file_type
-    files = listdir(directory)
-    files[0] = "Select from list"
-    file = st.selectbox("Pick an image to test",files) 
-    return file
-        
-def f1(y_true, y_pred):    
-    def recall_m(y_true, y_pred):
-        TP = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
-        Positives = K.sum(K.round(K.clip(y_true, 0, 1)))
-        
-        recall = TP / (Positives+K.epsilon())    
-        return recall     
+#import subprocess
+#packages = str(subprocess.run('pip list', capture_output=True))
+#st.markdown(packages.replace('\\r\\n', '  \\\n'))
 
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
 
@@ -60,6 +19,14 @@ img_home_01 = Image.open('images/cell_images.png')
 img_EDA_01 = Image.open('images/EDA_01.png')
 img_EDA_02 = Image.open('images/EDA_02.png')
 img_EDA_03 = Image.open('images/EDA_03.png')
+Analysis_01 = Image.open('images/Analysis_01.png')
+Analysis_02 = Image.open('images/Analysis_02.png')
+Analysis_04_mix = Image.open('images/Analysis_04_mix.png')
+Analysis_05_mix = Image.open('images/Analysis_05_mix.png')
+#Analysis_06_mix = Image.open('images/Analysis_06_mix.png')
+Analysis_07_Amri = Image.open('images/Analysis_07_Amri.png')
+Analysis_08_Amri = Image.open('images/Analysis_08_Amri.png')
+Analysis_09_Amri = Image.open('images/analysis_09_Amri.png')
 
 #Title of the Page
 Header = st.container()
@@ -89,12 +56,64 @@ if selected == 'E.D.A.':
 #Section Models     
 if selected == 'Modelisation':
     st.header('Modelisation')
-  #  st.markdown('We started with four pretrained models ResNet50V2, VGG16, MobileNetV2 and Xception. Without notable image preprocessing, modification of layers or hyper parameters and the imbalanced dataset the resulting accuracies remained close to random (~12,5% F1). Also we faced memory errors working with the whole dataset of 52 000 images. ')
-  #  st.header('Subsample')
-  #  st.markdown('To solve imbalance and memory issues a subsample was created. Regarding the class with the smallest occurrence (Basophil, n = 1598) a total number of 12784 images was extracted, where now every class was evenly represented. This was done using pandas methods groupby and sample. The subsample was given to every member of the group to stay comparable in modelisation.')
-  #  st.header('Image Augmentation')
-  #  st.markdown('Image augmentation can be usefull to train your model and prevent it from overfitting, but in this case it didn’t. The classical ImageDataGenerators resulted in continuously higher validation scores compared to training scores and long runtimes varying between a couple of hours up to an entire day to train a single model. Considering that blood cell images tend to be recorded in standardized environments with similar methodologies, it was hypothesized that too much data augmentation was decreasing performance of the model. Reducing the image augmentation to horizontal & vertical flips, as well as random rotations in the form of an augmentation layer combined with rethinking the layer architecture resulted in the first model hitting above an 80% F1 score. Regarding that the most important information of the image (the white blood cell to classify) tended to be in the center of the image, surrounded by non-essential red blood cells, it was hypothesized that center crop augmentation would be beneficial. It increased the F1 score to ~88%.')
-  #  st.header('Optimizations')
+    st.markdown('In the following we present the models obtaining the best prediction results:')
+    st.subheader('ResNet50V2 as base model')
+    st.markdown(
+        """
+        Simple model:
+        - Image augmentation: horizontal & vertical flips, random rotations and center crop augmentation
+        - Layer architecture: global average pooling layer, no dropout layers, finishing with a flattened layer and a dense layer with a high number of units (before the output layer) 
+        - F1-score: 91%
+        """)
+    
+    st.markdown(
+        """
+        With fine-tuning:
+        - the last (5th) Conv-block set to be trainable 
+        - this resulted in over 15 million trainable parameters compared to the initial 164.568 parameters
+        - F1-score: 98%
+        """) 
+    
+    col1, col2 = st.columns(2)
+    col1.image(Analysis_01, use_column_width=True, caption = 'ResNet50V2 Loss')
+    col2.image(Analysis_02, use_column_width=True, caption = 'ResNet50V2 Accuracy')
+    
+    st.markdown(
+        """
+        Mixed inputs: 
+        - The features luminosity and brightness were used as numerical input 
+        - next to the image arrays
+        - same architecture and fine-tuning as the previous model
+        - F1-score: 97.3%
+        """)
+    
+    col1, col2 = st.columns(2)
+    col1.image(Analysis_04_mix, use_column_width=True, caption = 'Mixed Inputs Loss')
+    col2.image(Analysis_05_mix, use_column_width=True, caption = 'Mixed Inputs Accuracy')
+    
+    # st.image(Analysis_06_mix, caption = 'Confusion Matrix')
+    
+    st.subheader('VGG16 as base model')
+    st.markdown(
+        """
+        Simple model:
+        - Image: architecture:
+        - Layer architecture: global average pooling layer, two large Dense layers followed by a slight dropout layer
+        - F1-score: 86%
+        """)
+    st.markdown(
+        """
+        With fine-tuning: 
+        - the last 3 layers were set to trainable 
+        - this resulted in close to six million trainable parameters compared to the initial 1.054.216 parameters.
+        - F1-score: 96%
+        """)
+
+    col1, col2 = st.columns(2)
+    col1.image(Analysis_07_Amri, use_column_width=True, caption = 'VGG16 Loss')
+    col2.image(Analysis_08_Amri, use_column_width=True, caption = 'VGG16 Accuracy')
+
+    st.image(Analysis_09_Amri, caption = 'VGG16 Confusion Matrix')
     
 #Section Prediction    
 if selected == 'Prediction':
@@ -111,7 +130,6 @@ try:
         
     elif(model != "Select one model from the list"):
         st.subheader("Select the image for prediction")
-
         # load model
         if(model == 'ResNet'):
             model = load_model('models/Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
@@ -127,15 +145,12 @@ try:
             
         #placeholder = st.empty()
         #with placeholder.container():
-
         col1, col2 = st.columns(2)
-
         # load dataset 1
         with col1:
             file = st.file_uploader(label='Pick an image to test',
                                                 accept_multiple_files=False)
             prediction(file)
-
         # load dataset 2
         
         with col2:
@@ -163,4 +178,15 @@ if selected == 'About':
     st.markdown('This mashine learning project was part of Datascientest International Class at University of Paris La Sorbonne.')
     st.header('Contributors')
     st.write('Amritha Prasneh  \n Elias Zitterbarth  \n Daniela Hummel  \n Lilli Krizek')
-  
+            """
+#Section Perspectives    
+if selected == 'Perspectives':
+    st.header('Perspectives')
+    st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
+
+#Section About    
+if selected == 'About':
+    st.header('About')
+    st.markdown('This mashine learning project was part of Datascientest International Class at University of Paris La Sorbonne.')
+    st.header('Contributors')
+    st.write('Amritha Prasneh  \n Elias Zitterbarth  \n Daniela Hummel  \n Lilli Krizek')
