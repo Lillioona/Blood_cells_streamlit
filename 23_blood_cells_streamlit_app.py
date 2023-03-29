@@ -55,12 +55,19 @@ if selected == 'Modelisation':
     st.subheader('ResNet50V2 as base model')
     st.markdown(
         """
+        Simple model:
         - Image augmentation: horizontal & vertical flips, random rotations and center crop augmentation
         - Layer architecture: global average pooling layer, no dropout layers, finishing with a flattened layer and a dense layer with a high number of units (before the output layer) 
+        - F1-score: 91%
         """)
-    st.markdown('F1-score: 91%')
-    st.markdown('Fine-tuning:the last (5th) Conv-block was set to be trainable which resulted in over 15 million trainable parameters compared to the initial 164.568 parameters.') 
-    st.markdown('F1-score: 91%')
+    
+    st.markdown(
+        """
+        With fine-tuning
+        - the last (5th) Conv-block set to be trainable 
+        - this resulted in over 15 million trainable parameters compared to the initial 164.568 parameters
+        - F1-score: 98%
+        """) 
     
     col1, col2 = st.columns(2)
     col1.image(Analysis_01, use_column_width=True, caption = 'ResNet50V2 Loss')
