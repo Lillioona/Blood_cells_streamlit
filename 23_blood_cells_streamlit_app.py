@@ -14,14 +14,14 @@ img_home_01 = Image.open('images/cell_images.png')
 img_EDA_01 = Image.open('images/EDA_01.png')
 img_EDA_02 = Image.open('images/EDA_02.png')
 img_EDA_03 = Image.open('images/EDA_03.png')
-Analysis_01 = Image.open('images/Analysis_01')
-Analysis_02 = Image.open('images/Analysis_02')
-Analysis_04_mix = Image.open('images/Analysis_04_mix')
-Analysis_05_mix = Image.open('images/Analysis_05_mix')
-Analysis_06_mix = Image.open('images/Analysis_06_mix')
-Analysis_07_Amri = Image.open('images/Analysis_07_Amri')
-Analysis_08_Amri = Image.open('images/Analysis_08_Amri')
-Analysis_09_Amri = Image.open('images/Analysis_09_Amri')
+Analysis_01 = Image.open('images/Analysis_01.png')
+Analysis_02 = Image.open('images/Analysis_02.png')
+Analysis_04_mix = Image.open('images/Analysis_04_mix.png')
+Analysis_05_mix = Image.open('images/Analysis_05_mix.png')
+Analysis_06_mix = Image.open('images/Analysis_06_mix.png')
+Analysis_07_Amri = Image.open('images/Analysis_07_Amri.png')
+Analysis_08_Amri = Image.open('images/Analysis_08_Amri.png')
+Analysis_09_Amri = Image.open('images/Analysis_09_Amri.png')
 
 #Title of the Page
 Header = st.container()
@@ -64,6 +64,32 @@ if selected == 'Modelisation':
     col1.image(Analysis_01, use_column_width=True)
     col2.header("Accuracy")
     col2.image(Analysis_02, use_column_width=True)
+    
+    st.markdown('Mixed inputs: The features luminosity and brightness were used as numerical input next to the image arrays, with ResNet50V2 as base model and the same architecture and fine-tuning as the previous model')
+    st.markdown('F1-score: 97.3%')
+    
+    col1, col2 = st.columns(2)
+    col1.header("Loss")
+    col1.image(Analysis_04_mix, use_column_width=True)
+    col2.header("Accuracy")
+    col2.image(Analysis_05_mix, use_column_width=True)
+    
+    st.image(Analysis_06_mix, caption = 'Confusion Matrix')
+    
+    st.subheader('VGG16 as base model')
+    st.markdown('F1-score: 91%')
+    st.markdown('Layer architecture:  global average pooling layer, two large Dense layers followed by a slight dropout layer')
+    st.markdown('F1-score: 86%')
+    st.markdown('Fine-tuning: the last 3 layers were set to trainable which resulted in close to six million trainable parameters compared to the initial 1.054.216 parameters.')
+    st.markdown('F1-score: 96%')
+
+    col1, col2 = st.columns(2)
+    col1.header("Loss")
+    col1.image(Analysis_07_Amri, use_column_width=True)
+    col2.header("Accuracy")
+    col2.image(Analysis_08_Amri, use_column_width=True)
+
+    st.image(Analysis_09_Amri, caption = 'Confusion Matrix')
     
 #Section Prediction    
 if selected == 'Prediction':
