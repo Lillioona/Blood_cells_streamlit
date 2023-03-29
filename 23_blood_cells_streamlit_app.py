@@ -4,7 +4,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 from os import listdir     
 from PIL import Image, ImageOps
-#import cv2
+import cv2
 #import tensorflow as tf
 #from tensorflow.keras.models import load_model
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
@@ -86,8 +86,8 @@ if selected == 'Modelisation':
     col1, col2 = st.columns(2)
     col1.header("Loss")
     col1.image(Analysis_07_Amri, use_column_width=True)
-   # col2.header("Accuracy")
-    col2.image(Analysis_08_Amri, use_column_width=True, caption = 'Confusion Matrix')
+    col2.header("Accuracy")
+    col2.image(Analysis_08_Amri, use_column_width=True)
 
     st.image(Analysis_09_Amri, caption = 'Confusion Matrix')
     
