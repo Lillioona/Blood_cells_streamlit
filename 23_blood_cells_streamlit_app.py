@@ -1,13 +1,17 @@
 import streamlit as st
+import subprocess
+
+
+packages = str(subprocess.run('pip list', capture_output=True))
+st.markdown(packages.replace('\\r\\n', '  \\\n'))
+
 import numpy as np
 import pickle
 from streamlit_option_menu import option_menu
 from os import listdir     
 from PIL import Image, ImageOps
-import subprocess
 
-packages = str(subprocess.run('pip list', capture_output=True))
-st.markdown(packages.replace('\\r\\n', '  \\\n'))
+
 
 #import cv2
 #import tensorflow as tf
