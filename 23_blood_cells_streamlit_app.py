@@ -7,7 +7,7 @@ from os import listdir
 import numpy as np
 from PIL import Image, ImageOps
 import tensorflow as tf
-from tensorflow.keras.models import load_model
+#from tensorflow.keras.models import load_model
 
 """
 def prediction(file):
