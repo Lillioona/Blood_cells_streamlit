@@ -2,6 +2,5 @@ numpy
 streamlit
 Pillow
 streamlit_option_menu==0.3.2
-tensorflow==2.6.0
-tensorboard==2.6.0
-streamlit==1.2.0
+tensorflow
+tensorboard0
