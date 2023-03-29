@@ -3,13 +3,13 @@ import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
 from os import listdir
-#import cv2
+import cv2
 import numpy as np
 from PIL import Image, ImageOps
 import tensorflow as tf
-#from tensorflow.keras.models import load_model
+from tensorflow.keras.models import load_model
 
-"""
+
 def prediction(file):
     if file is not None:
             image_data = Image.open(file)
@@ -36,7 +36,7 @@ def prediction(file):
                                         'neutrophil',
                                         'platelet']
             st.write('This image most likely belongs to ', true_classes_list[predicted_class])
-"""
+
     
 def list_images(directory, file_type):
     directory += file_type
