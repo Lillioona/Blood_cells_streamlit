@@ -4,9 +4,9 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 from os import listdir
 #import cv2
-import numpy as np
-from PIL import Image, ImageOps
-import tensorflow as tf
+#import numpy as np
+#from PIL import Image, ImageOps
+#import tensorflow as tf
 #from tensorflow.keras.models import load_model
 
 """
