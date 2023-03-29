@@ -87,7 +87,7 @@ if selected == 'Modelisation':
     col1.header("Loss")
     col1.image(Analysis_07_Amri, use_column_width=True)
    # col2.header("Accuracy")
-    col2.image(Analysis_08_Amri, use_column_width=True, , caption = 'Confusion Matrix')
+    col2.image(Analysis_08_Amri, use_column_width=True, caption = 'Confusion Matrix')
 
     st.image(Analysis_09_Amri, caption = 'Confusion Matrix')
     
