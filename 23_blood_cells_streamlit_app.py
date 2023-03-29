@@ -5,7 +5,7 @@ from streamlit_option_menu import option_menu
 from os import listdir     
 from PIL import Image, ImageOps
 
-#import tensorflow as tf
+import tensorflow as tf
 from tensorflow.keras.models import load_model
 
 #import subprocess
