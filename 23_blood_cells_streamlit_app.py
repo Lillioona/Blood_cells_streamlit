@@ -3,13 +3,13 @@ import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
 from os import listdir
-#import cv2
+import cv2
 import numpy as np
 from PIL import Image, ImageOps
-#import tensorflow as tf
-#from tensorflow.keras.models import load_model
+import tensorflow as tf
+from tensorflow.keras.models import load_model
 
-"""
+
 def prediction(file):
     if file is not None:
             image_data = Image.open(file)
@@ -52,7 +52,7 @@ def f1(y_true, y_pred):
         
         recall = TP / (Positives+K.epsilon())    
         return recall     
-"""
+
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
 
 #images
