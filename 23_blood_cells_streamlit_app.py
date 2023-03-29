@@ -73,8 +73,14 @@ if selected == 'Modelisation':
     col1.image(Analysis_01, use_column_width=True, caption = 'ResNet50V2 Loss')
     col2.image(Analysis_02, use_column_width=True, caption = 'ResNet50V2 Accuracy')
     
-    st.markdown('Mixed inputs: The features luminosity and brightness were used as numerical input next to the image arrays, with ResNet50V2 as base model and the same architecture and fine-tuning as the previous model')
-    st.markdown('F1-score: 97.3%')
+    st.markdown(
+        """
+        Mixed inputs: 
+        - The features luminosity and brightness were used as numerical input 
+        - next to the image arrays
+        - same architecture and fine-tuning as the previous model
+        - F1-score: 97.3%
+        """)
     
     col1, col2 = st.columns(2)
     col1.image(Analysis_04_mix, use_column_width=True, caption = 'Mixed Inputs Loss')
@@ -83,11 +89,20 @@ if selected == 'Modelisation':
     # st.image(Analysis_06_mix, caption = 'Confusion Matrix')
     
     st.subheader('VGG16 as base model')
-    st.markdown('F1-score: 91%')
-    st.markdown('Layer architecture:  global average pooling layer, two large Dense layers followed by a slight dropout layer')
-    st.markdown('F1-score: 86%')
-    st.markdown('Fine-tuning: the last 3 layers were set to trainable which resulted in close to six million trainable parameters compared to the initial 1.054.216 parameters.')
-    st.markdown('F1-score: 96%')
+    st.markdown(
+        """
+        Simple model:
+        - Image: architecture:
+        - Layer architecture: global average pooling layer, two large Dense layers followed by a slight dropout layer
+        - F1-score: 86%
+        """)
+    st.markdown(
+        """
+        With fine-tuning: 
+        - the last 3 layers were set to trainable 
+        - this resulted in close to six million trainable parameters compared to the initial 1.054.216 parameters.
+        - F1-score: 96%
+        """)
 
     col1, col2 = st.columns(2)
     col1.image(Analysis_07_Amri, use_column_width=True, caption = 'VGG16 Loss')
