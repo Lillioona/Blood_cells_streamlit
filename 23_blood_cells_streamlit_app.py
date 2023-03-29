@@ -2,52 +2,7 @@ import numpy as np
 import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
-from os import listdir
-
-
-
-def prediction(file):
-    if file is not None:
-            image_data = Image.open(file)
-            st.image(image_data, width=180)
- 
-            size = (360,360)    
-            image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
-            image = np.asarray(image)
-
-            img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-            #img_resize = (cv2.resize(img, dsize=(75, 75),    interpolation=cv2.INTER_CUBIC))/255
-
-            img_reshape = img[np.newaxis,...]
-            prediction = model.predict(img_reshape)
-
-            predicted_class = np.argmax(prediction)
-            #st.write(predicted_class)
-            true_classes_list = ['basophil',
-                                        'eosinophil',
-                                        'erythroblast',
-                                        'ig',
-                                        'lymphocyte',
-                                        'monocyte',
-                                        'neutrophil',
-                                        'platelet']
-            st.write('This image most likely belongs to ', true_classes_list[predicted_class])
-
-    
-def list_images(directory, file_type):
-    directory += file_type
-    files = listdir(directory)
-    files[0] = "Select from list"
-    file = st.selectbox("Pick an image to test",files) 
-    return file
-        
-def f1(y_true, y_pred):    
-    def recall_m(y_true, y_pred):
-        TP = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
-        Positives = K.sum(K.round(K.clip(y_true, 0, 1)))
-        
-        recall = TP / (Positives+K.epsilon())    
-        return recall     
+from os import listdir     
 
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
 
