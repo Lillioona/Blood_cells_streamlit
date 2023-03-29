@@ -4,7 +4,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 from os import listdir     
 from PIL import Image, ImageOps
-import cv2
+#import cv2
 #import tensorflow as tf
 #from tensorflow.keras.models import load_model
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
@@ -60,19 +60,15 @@ if selected == 'Modelisation':
     st.markdown('F1-score: 91%')
     
     col1, col2 = st.columns(2)
-    col1.header("Loss")
-    col1.image(Analysis_01, use_column_width=True)
-    col2.header("Accuracy")
-    col2.image(Analysis_02, use_column_width=True)
+    col1.image(Analysis_01, use_column_width=True, caption = 'ResNet50V2 Loss')
+    col2.image(Analysis_02, use_column_width=True, caption = 'ResNet50V2 Accuracy')
     
     st.markdown('Mixed inputs: The features luminosity and brightness were used as numerical input next to the image arrays, with ResNet50V2 as base model and the same architecture and fine-tuning as the previous model')
     st.markdown('F1-score: 97.3%')
     
     col1, col2 = st.columns(2)
-    col1.header("Loss")
-    col1.image(Analysis_04_mix, use_column_width=True)
-    col2.header("Accuracy")
-    col2.image(Analysis_05_mix, use_column_width=True)
+    col1.image(Analysis_04_mix, use_column_width=True, caption = 'Mixed Inputs Loss')
+    col2.image(Analysis_05_mix, use_column_width=True, caption = 'Mixed Inputs Accuracy')
     
     # st.image(Analysis_06_mix, caption = 'Confusion Matrix')
     
@@ -84,12 +80,10 @@ if selected == 'Modelisation':
     st.markdown('F1-score: 96%')
 
     col1, col2 = st.columns(2)
-    col1.header("Loss")
-    col1.image(Analysis_07_Amri, use_column_width=True)
-    col2.header("Accuracy")
-    col2.image(Analysis_08_Amri, use_column_width=True)
+    col1.image(Analysis_07_Amri, use_column_width=True, caption = 'VGG16 Loss')
+    col2.image(Analysis_08_Amri, use_column_width=True, caption = 'VGG16 Accuracy')
 
-    st.image(Analysis_09_Amri, caption = 'Confusion Matrix')
+    st.image(Analysis_09_Amri, caption = 'VGG16 Confusion Matrix')
     
 #Section Prediction    
 if selected == 'Prediction':
