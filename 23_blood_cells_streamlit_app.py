@@ -18,7 +18,7 @@ Analysis_01 = Image.open('images/Analysis_01.png')
 Analysis_02 = Image.open('images/Analysis_02.png')
 Analysis_04_mix = Image.open('images/Analysis_04_mix.png')
 Analysis_05_mix = Image.open('images/Analysis_05_mix.png')
-Analysis_06_mix = Image.open('images/Analysis_06_mix.png')
+#Analysis_06_mix = Image.open('images/Analysis_06_mix.png')
 Analysis_07_Amri = Image.open('images/Analysis_07_Amri.png')
 Analysis_08_Amri = Image.open('images/Analysis_08_Amri.png')
 Analysis_09_Amri = Image.open('images/analysis_09_Amri.png')
@@ -74,7 +74,7 @@ if selected == 'Modelisation':
     col2.header("Accuracy")
     col2.image(Analysis_05_mix, use_column_width=True)
     
-    st.image(Analysis_06_mix, caption = 'Confusion Matrix')
+    # st.image(Analysis_06_mix, caption = 'Confusion Matrix')
     
     st.subheader('VGG16 as base model')
     st.markdown('F1-score: 91%')
