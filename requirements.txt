@@ -1,5 +1,5 @@
-numpy==1.23.5
-opencv-python-headless
+numpy
+opencv-contrib-python-headless
 opencv-python
 Pillow==9.4.0
 streamlit_option_menu==0.3.2
