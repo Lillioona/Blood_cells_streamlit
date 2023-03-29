@@ -21,7 +21,7 @@ Analysis_05_mix = Image.open('images/Analysis_05_mix.png')
 Analysis_06_mix = Image.open('images/Analysis_06_mix.png')
 Analysis_07_Amri = Image.open('images/Analysis_07_Amri.png')
 Analysis_08_Amri = Image.open('images/Analysis_08_Amri.png')
-Analysis_09_Amri = Image.open('images/Analysis_09_Amri.png')
+Analysis_09_Amri = Image.open('images/analysis_09_Amri.png')
 
 #Title of the Page
 Header = st.container()
