@@ -98,6 +98,7 @@ if selected == 'Modelisation':
 #Section Prediction    
 if selected == 'Prediction':
     st.header('Prediction')
+    """
     st.subheader("Choose the model for prediction")
 try:
     model = st.selectbox("XXX", 
@@ -135,7 +136,7 @@ try:
             prediction(file)
 
         # load dataset 2
-        """
+        
         with col2:
             directory = '/Volumes/WDElements/Amritha/XXX/'
             file_type = st.selectbox("Select your favorite image type",
