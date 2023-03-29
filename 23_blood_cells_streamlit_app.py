@@ -177,9 +177,5 @@ if selected == 'About':
     st.header('About')
     st.markdown('This mashine learning project was part of Datascientest International Class at University of Paris La Sorbonne.')
     st.header('Contributors')
-<<<<<<< HEAD
     st.write('Amritha Prasneh  \n Elias Zitterbarth  \n Daniela Hummel  \n Lilli Krizek')
-=======
-    st.write('Amritha Prasneh  \n Elias Zitterbarth  \n Daniela Hummel  \n Lilli Krizek')
-           
->>>>>>> ea5136fbabdc70d7f02fdd64d1d2b1d236e0e069
+
