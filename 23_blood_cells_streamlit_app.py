@@ -118,7 +118,7 @@ if selected == 'Modelisation':
 #Section Prediction    
 if selected == 'Prediction':
     st.header('Prediction')
-    """
+
     st.subheader("Choose the model for prediction")
 try:
     model = st.selectbox("XXX", 
@@ -166,7 +166,7 @@ try:
                                                    
         except:
             st.error("error")
-            """
+         
 #Section Perspectives    
 if selected == 'Perspectives':
     st.header('Perspectives')
