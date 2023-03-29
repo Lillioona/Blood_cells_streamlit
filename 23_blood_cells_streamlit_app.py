@@ -50,8 +50,22 @@ if selected == 'Modelisation':
 #Section Prediction    
 if selected == 'Prediction':
     st.header('Prediction')
-    st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
-
+    st.subheader("Choose the model for prediction")
+    try:
+        model = st.selectbox("XXX",
+                            ["Select one model from the list", "ResNet", "ResNet_MixedInput", "VGG16"],
+                            label_visibility = "hidden")
+        if not model:
+            st.error("Please select at least one model.")
+        elif(model != "Select one model from the list"):
+            st.subheader("Select the image for prediction")
+            st.text(model)
+    except:
+        st.error(
+            """
+            error:
+            """
+        )
 #Section Perspectives    
 if selected == 'Perspectives':
     st.header('Perspectives')
