@@ -60,6 +60,14 @@ img_home_01 = Image.open('images/cell_images.png')
 img_EDA_01 = Image.open('images/EDA_01.png')
 img_EDA_02 = Image.open('images/EDA_02.png')
 img_EDA_03 = Image.open('images/EDA_03.png')
+Analysis_01 = Image.open('images/Analysis_01')
+Analysis_02 = Image.open('images/Analysis_02')
+Analysis_04_mix = Image.open('images/Analysis_04_mix')
+Analysis_05_mix = Image.open('images/Analysis_05_mix')
+Analysis_06_mix = Image.open('images/Analysis_06_mix')
+Analysis_07_Amri = Image.open('images/Analysis_07_Amri')
+Analysis_08_Amri = Image.open('images/Analysis_08_Amri')
+Analysis_09_Amri = Image.open('images/Analysis_09_Amri')
 
 #Title of the Page
 Header = st.container()
@@ -89,12 +97,19 @@ if selected == 'E.D.A.':
 #Section Models     
 if selected == 'Modelisation':
     st.header('Modelisation')
-  #  st.markdown('We started with four pretrained models ResNet50V2, VGG16, MobileNetV2 and Xception. Without notable image preprocessing, modification of layers or hyper parameters and the imbalanced dataset the resulting accuracies remained close to random (~12,5% F1). Also we faced memory errors working with the whole dataset of 52 000 images. ')
-  #  st.header('Subsample')
-  #  st.markdown('To solve imbalance and memory issues a subsample was created. Regarding the class with the smallest occurrence (Basophil, n = 1598) a total number of 12784 images was extracted, where now every class was evenly represented. This was done using pandas methods groupby and sample. The subsample was given to every member of the group to stay comparable in modelisation.')
-  #  st.header('Image Augmentation')
-  #  st.markdown('Image augmentation can be usefull to train your model and prevent it from overfitting, but in this case it didn’t. The classical ImageDataGenerators resulted in continuously higher validation scores compared to training scores and long runtimes varying between a couple of hours up to an entire day to train a single model. Considering that blood cell images tend to be recorded in standardized environments with similar methodologies, it was hypothesized that too much data augmentation was decreasing performance of the model. Reducing the image augmentation to horizontal & vertical flips, as well as random rotations in the form of an augmentation layer combined with rethinking the layer architecture resulted in the first model hitting above an 80% F1 score. Regarding that the most important information of the image (the white blood cell to classify) tended to be in the center of the image, surrounded by non-essential red blood cells, it was hypothesized that center crop augmentation would be beneficial. It increased the F1 score to ~88%.')
-  #  st.header('Optimizations')
+    st.markdown('In the following we present the models obtaining the best prediction results:')
+    st.subheader('ResNet50V2 as base model')
+    st.markdown('Image augmentation: horizontal & vertical flips, random rotations and center crop augmentation')
+    st.markdown('Layer architecture: global average pooling layer, no dropout layers, finishing with a flattened layer and a dense layer with a high number of units (before the output layer) ')
+    st.markdown('F1-score: 91%')
+    st.markdown('Fine-tuning:the last (5th) Conv-block was set to be trainable which resulted in over 15 million trainable parameters compared to the initial 164.568 parameters.') 
+    st.markdown('F1-score: 91%')
+    
+    col1, col2 = st.columns(2)
+    col1.header("Loss")
+    col1.image(Analysis_01, use_column_width=True)
+    col2.header("Accuracy")
+    col2.image(Analysis_02, use_column_width=True)
     
 #Section Prediction    
 if selected == 'Prediction':
