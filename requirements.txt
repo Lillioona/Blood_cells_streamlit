@@ -3,4 +3,4 @@ streamlit
 Pillow
 streamlit_option_menu==0.3.2
 tensorflow
-tensorboard0
+tensorboard
