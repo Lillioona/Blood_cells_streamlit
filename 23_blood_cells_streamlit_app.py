@@ -1,6 +1,11 @@
+import streamlit as st
+import subprocess
+
+packages = str(subprocess.run('pip list', capture_output=True))
+st.markdown(packages.replace('\\r\\n', '  \\\n'))
+
 import numpy as np
 import pickle
-import streamlit as st
 from streamlit_option_menu import option_menu
 from os import listdir     
 from PIL import Image, ImageOps
