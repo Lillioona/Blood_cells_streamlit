@@ -120,52 +120,52 @@ if selected == 'Prediction':
     st.header('Prediction')
 
     st.subheader("Choose the model for prediction")
-try:
-    model = st.selectbox("XXX", 
-                        ["Select one model from the list", "ResNet", "ResNet_MixedInput", "VGG16"],
-                        label_visibility = "hidden")
-    
-    if not model:
-        st.error("Please select at least one model.")
-        
-    elif(model != "Select one model from the list"):
-        st.subheader("Select the image for prediction")
-        # load model
-        if(model == 'ResNet'):
-            model = load_model('models/Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
-           # model = load_model('/Users/prasnehpuzhakkal/Downloads/Best_model_ft_5th_layer.h5', 
-                              # custom_objects={'f1':f1})
-        elif(model =='ResNet_MixedInput'):
-            model = load_model('models/final_mixed_input_model_ft_no_bpc.h5', custom_objects={'f1':f1})
-            #model = load_model('/Users/prasnehpuzhakkal/Downloads/final_mixed_input_model_ft_no_bpc.h5', 
-                              # custom_objects={'f1':f1}) 
-        elif(model =='VGG16'):
-            model = load_model('models/vgg16_augmented_model.h5')
-            #model = load_model('/Users/prasnehpuzhakkal/Downloads/vgg16_augmented_model.h5')
-            
-        #placeholder = st.empty()
-        #with placeholder.container():
-        col1, col2 = st.columns(2)
-        # load dataset 1
-        with col1:
-            file = st.file_uploader(label='Pick an image to test',
-                                                accept_multiple_files=False)
-            prediction(file)
-        # load dataset 2
-        
-        with col2:
-            directory = '/Volumes/WDElements/Amritha/XXX/'
-            file_type = st.selectbox("Select your favorite image type",
-                                    ('basophil','eosinophil','erythroblast','ig','lymphocyte','monocyte','neutrophil','platelet'),
-                                    )
-            file = list_images(directory, file_type)
-            file_path = directory+file_type+'/'+file
-            if(file != "Select from list"):
-                prediction(file_path)
+    try:
+        model = st.selectbox("XXX", 
+                            ["Select one model from the list", "ResNet", "ResNet_MixedInput", "VGG16"],
+                            label_visibility = "hidden")
+
+        if not model:
+            st.error("Please select at least one model.")
+
+        elif(model != "Select one model from the list"):
+            st.subheader("Select the image for prediction")
+            # load model
+            if(model == 'ResNet'):
+                model = load_model('models/Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
+               # model = load_model('/Users/prasnehpuzhakkal/Downloads/Best_model_ft_5th_layer.h5', 
+                                  # custom_objects={'f1':f1})
+            elif(model =='ResNet_MixedInput'):
+                model = load_model('models/final_mixed_input_model_ft_no_bpc.h5', custom_objects={'f1':f1})
+                #model = load_model('/Users/prasnehpuzhakkal/Downloads/final_mixed_input_model_ft_no_bpc.h5', 
+                                  # custom_objects={'f1':f1}) 
+            elif(model =='VGG16'):
+                model = load_model('models/vgg16_augmented_model.h5')
+                #model = load_model('/Users/prasnehpuzhakkal/Downloads/vgg16_augmented_model.h5')
+
+            #placeholder = st.empty()
+            #with placeholder.container():
+            col1, col2 = st.columns(2)
+            # load dataset 1
+            with col1:
+                file = st.file_uploader(label='Pick an image to test',
+                                                    accept_multiple_files=False)
+                prediction(file)
+            # load dataset 2
+
+            with col2:
+                directory = '/Volumes/WDElements/Amritha/XXX/'
+                file_type = st.selectbox("Select your favorite image type",
+                                        ('basophil','eosinophil','erythroblast','ig','lymphocyte','monocyte','neutrophil','platelet'),
+                                        )
+                file = list_images(directory, file_type)
+                file_path = directory+file_type+'/'+file
+                if(file != "Select from list"):
+                    prediction(file_path)
          
                                                    
-#        except:
-#            st.error("error")
+    except:
+        st.error("error")
          
 #Section Perspectives    
 if selected == 'Perspectives':
@@ -177,9 +177,4 @@ if selected == 'About':
     st.header('About')
     st.markdown('This mashine learning project was part of Datascientest International Class at University of Paris La Sorbonne.')
     st.header('Contributors')
-<<<<<<< HEAD
     st.write('Amritha Prasneh  \n Elias Zitterbarth  \n Daniela Hummel  \n Lilli Krizek')
-=======
-    st.write('Amritha Prasneh  \n Elias Zitterbarth  \n Daniela Hummel  \n Lilli Krizek')
-           
->>>>>>> ea5136fbabdc70d7f02fdd64d1d2b1d236e0e069
