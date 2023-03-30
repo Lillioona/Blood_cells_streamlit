@@ -184,14 +184,14 @@ if selected == 'Prediction':
                 except:
                     st.error("error in load...")
 
-            col1, col2 = st.columns(2)
+          #  col1, col2 = st.columns(2)
             # load dataset 1
-            with col1:
-                file = st.file_uploader(label='Pick an image to test',accept_multiple_files=False)
-                prediction(file)
+       #     with col1:
+       #         file = st.file_uploader(label='Pick an image to test',accept_multiple_files=False)
+        #        prediction(file)
             # load dataset 2
-            with col2:
-                st.write("Select images")
+        #    with col2:
+        #        st.write("Select images")
 
 
          
