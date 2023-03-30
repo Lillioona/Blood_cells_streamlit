@@ -92,7 +92,7 @@ if selected == 'Introduction':
  By the change of their blood components in blood count many diseases can be discovered as well as their severity, 
 because of that blood is one of the most examined body fluid in the medical laboratory. 
 
-Especially for hematological diseases, the analysis of the morphology of blood is well known and used.
+Especially for hematological diseases, the analysis of the morphology of blood is well known and used in form of blood smear review.
 However, to detect morphological differences among distinct types of normal and abnormal peripheral blood cells, it requires experience, skills and time.
 Therefore, it is very helpful for hematological diagnosis the use of automatic blood cell recognition system.
 
