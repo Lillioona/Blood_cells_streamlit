@@ -12,11 +12,7 @@ from tensorflow.keras.models import load_model
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
 def prediction(file):
     if file is not None:
-        try:
-            image_data = Image.open(file)
-        except:
-            st.write (' text file doesnot exist.. exiting') 
-            
+            image_data = Image.open(file)            
             st.image(image_data, width=180)
  
             size = (360,360)    
@@ -192,6 +188,7 @@ if selected == 'Prediction':
             with col1:
                 file = st.file_uploader(label='Pick an image to test',
                                                     accept_multiple_files=False)
+                st.write(file)
                 prediction(file)
             # load dataset 2
             with col2:
