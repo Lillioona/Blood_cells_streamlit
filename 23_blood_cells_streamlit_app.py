@@ -200,6 +200,6 @@ if selected == 'Perspectives':
 #Section About    
 if selected == 'About':
     st.header('About')
-    st.markdown('This mashine learning project was part of Datascientest International Class at University of Paris La Sorbonne.')
+    st.markdown('This machine learning project was part of Datascientest International Class at University of Paris La Sorbonne.')
     st.header('Contributors')
     st.write('Amritha Kalluvettukuzhiyil  \n Elias Zitterbarth  \n Daniela Hummel  \n Lilli Krizek')
