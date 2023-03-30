@@ -182,7 +182,8 @@ if selected == 'Prediction':
                 try:
                     current_path = os.getcwd()
                     model_path = os.path.join(current_path, 'models/vgg16_augmented_model.h5')
-                    model = load_model(model_path)
+                    st.write(model_path)
+                    #model = load_model(model_path)
                 except:
                     st.error("error in load...")
 
