@@ -158,8 +158,6 @@ if selected == 'Modelisation':
 #Section Prediction    
 if selected == 'Prediction':
     st.header('Prediction')
-    files = listdir(images)
-    st.write(files)
     st.subheader("Choose the model for prediction")
     try:
         model = st.selectbox("XXX", 
