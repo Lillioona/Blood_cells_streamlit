@@ -158,7 +158,7 @@ if selected == 'Modelisation':
 #Section Prediction    
 if selected == 'Prediction':
     st.header('Prediction')
-    files = listdir(models)
+    files = listdir(images)
     st.write(files)
     st.subheader("Choose the model for prediction")
     try:
