@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pickle
+import os
 from streamlit_option_menu import option_menu
 from os import listdir     
 from PIL import Image, ImageOps
@@ -179,7 +180,9 @@ if selected == 'Prediction':
                 
             elif(model =='VGG16'):
                 try:
-                    model = load_model(r'models/vgg16_augmented_model.h5')
+                    current_path = os.getcwd()
+                    model_path = os.path.join(current_path, 'models/vgg16_augmented_model.h5')
+                    model = load_model(model_path)
                 except:
                     st.error("error in load...")
 
