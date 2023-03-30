@@ -177,7 +177,7 @@ if selected == 'Prediction':
                 model = 'R_M'#load_model('models/final_mixed_input_model_ft_no_bpc.h5', custom_objects={'f1':f1})
                 
             elif(model =='VGG16'):
-                model = load_model('./models/vgg16_augmented_model.h5')
+                model = load_model('models/vgg16_augmented_model.h5',compile=False)
 
             #placeholder = st.empty()
             #with placeholder.container():
