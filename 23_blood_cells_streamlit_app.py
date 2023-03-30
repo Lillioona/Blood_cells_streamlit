@@ -179,7 +179,7 @@ if selected == 'Prediction':
             elif(model =='VGG16'):
                 try:
                     model = load_model('models/vgg16_augmented_model.h5',compile=False)
-                except StopExecution:
+                except:
                     st.write (' text file doesnot exist.. exiting')
                     pass
 
