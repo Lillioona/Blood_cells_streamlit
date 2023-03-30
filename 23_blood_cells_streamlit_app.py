@@ -161,37 +161,17 @@ if selected == 'Prediction':
     st.header('Prediction')
     st.subheader("Choose the model for prediction")
     try:
-        model = st.selectbox("XXX", 
-                            ["Select one model from the list", "ResNet", "ResNet_MixedInput", "VGG16"],
-                            label_visibility = "hidden")
-
-        if not model:
-            st.error("Please select at least one model.")
-
-        elif(model != "Select one model from the list"):
-            st.subheader("Select the image for prediction")
-
-            # load model
-            if(model == 'ResNet'):
-                model = load_model('models/Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
+        model = load_model('models/Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
                
-            elif(model =='ResNet_MixedInput'):
-                model = load_model('models/final_mixed_input_model_ft_no_bpc.h5', custom_objects={'f1':f1})
-                
-            elif(model =='VGG16'):
-                try:
-                    model = load_model('models/vgg16_augmented_model.h5')
-                except:
-                    st.error("error in load...")
-
-            col1, col2 = st.columns(2)
+           
+          #  col1, col2 = st.columns(2)
             # load dataset 1
-            with col1:
-                file = st.file_uploader(label='Pick an image to test',accept_multiple_files=False)
-                prediction(file)
+       #     with col1:
+       #         file = st.file_uploader(label='Pick an image to test',accept_multiple_files=False)
+        #        prediction(file)
             # load dataset 2
-            with col2:
-                st.write("Select images")
+        #    with col2:
+        #        st.write("Select images")
 
 
          
