@@ -196,8 +196,8 @@ if selected == 'Prediction':
 
          
                                                    
-  #  except:
-   #     st.error("error")
+    except:
+        st.error("error")
          
 #Section Perspectives    
 if selected == 'Perspectives':
