@@ -180,7 +180,7 @@ if selected == 'Prediction':
             elif(model =='VGG16'):
                 try:
                     #model = load_model('models/vgg16_augmented_model.h5')
-                    model = load_model('https://github.com/Lillioona/Blood_cells_streamlit/blob/3d2235714f7b452946f4f92717f256b75c66cd15/models/vgg16_augmented_model.h5')
+                    model = load_model('models/final_mixed_input_model_ft_no_bpc.h5')
                 except:
                     st.error("error in load...")
 
