@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pickle
-import os
+
 from streamlit_option_menu import option_menu
 from os import listdir     
 from PIL import Image, ImageOps
