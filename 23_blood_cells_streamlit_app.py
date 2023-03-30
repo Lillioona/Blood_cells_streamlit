@@ -90,7 +90,7 @@ if selected == 'Introduction':
     st.markdown(''' Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary substances such as nutrients and oxygen to cells, removing waste and immune defense. 
 
  By the change of their blood components in blood count many diseases can be discovered as well as their severity, 
-because of that blood is one of the most examined body fluid in the medical laboratory in form of blood smear review. 
+because of that blood is one of the most examined body fluid in the medical laboratory. 
 
 Especially for hematological diseases, the analysis of the morphology of blood is well known and used.
 However, to detect morphological differences among distinct types of normal and abnormal peripheral blood cells, it requires experience, skills and time.
