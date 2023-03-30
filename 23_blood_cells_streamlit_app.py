@@ -201,8 +201,13 @@ if selected == 'Prediction':
 #Section Perspectives    
 if selected == 'Perspectives':
     st.header('Perspectives')
-    st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
-
+    st.markdown('''The role of machine learning methods in intelligent medical diagnostics is becoming more and more present these days.
+    And deep neural networks are revolutionizing the medical diagnosis process rapidly.
+Nevertheless there are some significant factors which cannot be ignored by proceeding in this area.
+ For example, in the field of hematology, the type of microscope and camera is very influential.
+ As well as the processing of the blood cell diagnostic, like the use of stain changes the images considerably.
+In this project the focus was to detect 8 different blood cells, but in reality, there are subcategories of immature granulocytes and
+other early stages of blood cell type, which are not be considered.''')
 #Section About    
 if selected == 'About':
     st.header('About')
