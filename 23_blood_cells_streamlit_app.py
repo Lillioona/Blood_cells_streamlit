@@ -179,7 +179,7 @@ if selected == 'Prediction':
                 
             elif(model =='VGG16'):
                 try:
-                    model = load_model('models\vgg16_augmented_model.h5')
+                    model = 'v'#load_model('models\vgg16_augmented_model.h5')
                 except:
                     st.error("error in load...")
 
@@ -189,9 +189,9 @@ if selected == 'Prediction':
             col1, col2 = st.columns(2)
             # load dataset 1
             with col1:
-                #file = st.file_uploader(label='Pick an image to test',accept_multiple_files=False)
-                st.write("drag")
-                #prediction(file)
+                file = st.file_uploader(label='Pick an image to test',accept_multiple_files=False)
+                st.write(file)
+                prediction(file)
             # load dataset 2
             with col2:
                 st.write("Select images")
@@ -212,4 +212,4 @@ if selected == 'About':
     st.header('About')
     st.markdown('This mashine learning project was part of Datascientest International Class at University of Paris La Sorbonne.')
     st.header('Contributors')
-    st.write('Amritha Prasneh  \n Elias Zitterbarth  \n Daniela Hummel  \n Lilli Krizek')
+    st.write('Amritha Kalluvettukuzhiyil  \n Elias Zitterbarth  \n Daniela Hummel  \n Lilli Krizek')
