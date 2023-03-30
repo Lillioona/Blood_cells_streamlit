@@ -5,9 +5,9 @@ from streamlit_option_menu import option_menu
 from os import listdir     
 from PIL import Image, ImageOps
 
-import tensorflow as tf
+#import tensorflow as tf
 from tensorflow.keras.models import load_model
-#from tf.keras.models import load_model
+
 
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
 def prediction(file):
@@ -177,7 +177,7 @@ if selected == 'Prediction':
                 model = 'R_M'#load_model('models/final_mixed_input_model_ft_no_bpc.h5', custom_objects={'f1':f1})
                 
             elif(model =='VGG16'):
-                model = 'V'#load_model('models/vgg16_augmented_model.h5')
+                model = load_model('Blood_cells_streamlit/models/vgg16_augmented_model.h5')
 
             #placeholder = st.empty()
             #with placeholder.container():
