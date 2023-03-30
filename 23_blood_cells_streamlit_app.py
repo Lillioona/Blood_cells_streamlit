@@ -160,8 +160,8 @@ if selected == 'Modelisation':
 if selected == 'Prediction':
     st.header('Prediction')
     st.subheader("Choose the model for prediction")
-    try
-                model = load_model('models/Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
+    try:
+        model = load_model('models/Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
                
            
           #  col1, col2 = st.columns(2)
