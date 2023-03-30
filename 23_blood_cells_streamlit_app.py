@@ -192,6 +192,8 @@ if selected == 'Prediction':
                                                     accept_multiple_files=False)
                 prediction(file)
             # load dataset 2
+            with col2:
+                st.write("Select images")
 
 
          
