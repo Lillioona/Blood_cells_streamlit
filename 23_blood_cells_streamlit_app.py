@@ -12,7 +12,11 @@ from tensorflow.keras.models import load_model
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
 def prediction(file):
     if file is not None:
+        try:
             image_data = Image.open(file)
+        except:
+            st.write (' text file doesnot exist.. exiting') 
+            
             st.image(image_data, width=180)
  
             size = (360,360)    
@@ -36,6 +40,7 @@ def prediction(file):
                                         'neutrophil',
                                         'platelet']
             st.write('This image most likely belongs to ', true_classes_list[predicted_class])
+          
 
     
 def list_images(directory, file_type):
@@ -177,11 +182,8 @@ if selected == 'Prediction':
                 model = load_model('models/final_mixed_input_model_ft_no_bpc.h5', custom_objects={'f1':f1})
                 
             elif(model =='VGG16'):
-                try:
-                    model = load_model('models/vgg16_augmented_model.h5',compile=False)
-                except:
-                    st.write (' text file doesnot exist.. exiting')
-                    pass
+                model = load_model('models/vgg16_augmented_model.h5',compile=False)
+
 
             #placeholder = st.empty()
             #with placeholder.container():
