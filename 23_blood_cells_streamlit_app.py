@@ -179,9 +179,9 @@ if selected == 'Prediction':
                 
             elif(model =='VGG16'):
                 try:
-                    model = load_model('models/vgg16_augmented_model.h5',compile=False)
+                    model = load_model('models/vgg16_augmented_model.h5')
                 except:
-                    st.error("error in ...")
+                    st.error("error in load...")
 
 
             #placeholder = st.empty()
