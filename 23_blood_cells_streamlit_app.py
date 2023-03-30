@@ -180,9 +180,9 @@ if selected == 'Prediction':
                 
             elif(model =='VGG16'):
                 try:
-                    current_path = os.getcwd()
-                    model_path = os.path.join(current_path, 'models/vgg16_augmented_model.h5')
-                    st.write(model_path)
+                    #current_path = os.getcwd()
+                    #model_path = os.path.join(current_path, 'models/vgg16_augmented_model.h5')
+                    st.write("models")
                     #model = load_model(model_path)
                 except:
                     st.error("error in load...")
