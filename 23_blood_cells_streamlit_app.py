@@ -9,6 +9,10 @@ from PIL import Image, ImageOps
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 
+try:
+    model = load_model('Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
+except:
+    st.error('xxx')
 
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
 def prediction(file):
@@ -160,8 +164,8 @@ if selected == 'Modelisation':
 if selected == 'Prediction':
     st.header('Prediction')
     st.subheader("Choose the model for prediction")
-    try:
-        model = load_model('Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
+   
+       
                
            
           #  col1, col2 = st.columns(2)
@@ -175,9 +179,7 @@ if selected == 'Prediction':
 
 
          
-                                                   
-    except:
-        st.error("error")
+    
          
 #Section Perspectives    
 if selected == 'Perspectives':
