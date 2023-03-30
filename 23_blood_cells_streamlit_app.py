@@ -7,10 +7,7 @@ from PIL import Image, ImageOps
 
 import tensorflow as tf
 from tensorflow.keras.models import load_model
-
-#import subprocess
-#packages = str(subprocess.run('pip list', capture_output=True))
-#st.markdown(packages.replace('\\r\\n', '  \\\n'))
+from tf.keras.models import load_model
 
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
 
