@@ -17,7 +17,7 @@ def prediction(file):
             st.image(image_data, width=180)
  
             size = (360,360)    
-            image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
+            image = ImageOps.fit(image_data, size, Image.BICUBIC)
             image = np.asarray(image)
 
             img = image[:, :, ::-1]
