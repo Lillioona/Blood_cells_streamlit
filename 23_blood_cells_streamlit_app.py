@@ -158,7 +158,8 @@ if selected == 'Modelisation':
 #Section Prediction    
 if selected == 'Prediction':
     st.header('Prediction')
-
+    files = listdir(models)
+    st.write(files)
     st.subheader("Choose the model for prediction")
     try:
         model = st.selectbox("XXX", 
@@ -170,8 +171,7 @@ if selected == 'Prediction':
 
         elif(model != "Select one model from the list"):
             st.subheader("Select the image for prediction")
-            files = listdir(models)
-            st.write(files)
+
             # load model
             if(model == 'ResNet'):
                 model = load_model('models/Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
