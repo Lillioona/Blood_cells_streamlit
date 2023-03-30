@@ -171,10 +171,10 @@ if selected == 'Prediction':
             st.subheader("Select the image for prediction")
             # load model
             if(model == 'ResNet'):
-                model = 'R'#load_model('models/Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
+                model = load_model('models/Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
                
             elif(model =='ResNet_MixedInput'):
-                model = 'R_M'#load_model('models/final_mixed_input_model_ft_no_bpc.h5', custom_objects={'f1':f1})
+                model = load_model('models/final_mixed_input_model_ft_no_bpc.h5', custom_objects={'f1':f1})
                 
             elif(model =='VGG16'):
                 try:
@@ -193,15 +193,7 @@ if selected == 'Prediction':
                 prediction(file)
             # load dataset 2
 
-            with col2:
-                directory = '/Volumes/WDElements/Amritha/XXX/'
-                file_type = st.selectbox("Select your favorite image type",
-                                        ('basophil','eosinophil','erythroblast','ig','lymphocyte','monocyte','neutrophil','platelet'),
-                                        )
-                file = list_images(directory, file_type)
-                file_path = directory+file_type+'/'+file
-                if(file != "Select from list"):
-                    prediction(file_path)
+
          
                                                    
     except:
