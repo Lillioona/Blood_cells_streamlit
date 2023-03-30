@@ -169,7 +169,7 @@ if selected == 'Prediction':
             st.error("Please select at least one model.")
 
         elif(model != "Select one model from the list"):
-            st.subheader("Select the image for prediction")
+         #   st.subheader("Select the image for prediction")
 
             # load model
             if(model == 'ResNet'):
