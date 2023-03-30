@@ -100,7 +100,13 @@ The main object of this project is to develop a deep learning models to recogniz
 In general blood cells can be divided into erythrocytes known as red blood cells , leukocytes known as white blood cells and the cell fragments called platelets or thrombocytes.
 In this study the focus lies on erythroblasts which are an early stage of erythrocytes and the subdivision of leukocytes such as neutrophils, basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as mentioned above, platelets.''')
     st.image(img_home_01, caption = 'different types of blood cells')
-    
+    st.markdown('''The data which is used is based on three different sources and  is public available:
+
+Barcelona -A dataset of microscopic peripheral blood cell images for development of automatic recognition systems 2020
+
+Munich- A Single-cell Morphological Dataset of Leukocytes from AML Patients and Non-malignant Contols(AML-Cytomorhology LMU) 2022
+
+Rabbin- A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm 2022''')
 #Section EDA    
 if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
