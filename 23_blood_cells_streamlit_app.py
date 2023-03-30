@@ -170,6 +170,8 @@ if selected == 'Prediction':
 
         elif(model != "Select one model from the list"):
             st.subheader("Select the image for prediction")
+            files = listdir(models)
+            st.write(files)
             # load model
             if(model == 'ResNet'):
                 model = load_model('models/Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
@@ -179,9 +181,7 @@ if selected == 'Prediction':
                 
             elif(model =='VGG16'):
                 try:
-                    #model = load_model('models/vgg16_augmented_model.h5')
-                    files = listdir(models)
-                    st.write(files)
+                    model = load_model('models/vgg16_augmented_model.h5')
                 except:
                     st.error("error in load...")
 
