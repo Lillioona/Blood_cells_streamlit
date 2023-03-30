@@ -97,9 +97,10 @@ However, to detect morphological differences among distinct types of normal and 
 Therefore, it is very helpful for hematological diagnosis the use of deep learning models to recognize different types of  blood cells.
 
 
-The main object of this project is to develop a deep neural network to classify the different blood cells 
+The main object of this project is to develop a deep neural network to classify the different blood cells.
+
 In general blood cells can be divided into erythrocytes known as red blood cells , leukocytes known as white blood cells and the cell fragments called platelets or thrombocytes.
-In this study the focus lies on erythroblasts which are an early stage of erythrocytes and the subdivision of leukocytes such as neutrophils, basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as above mentioned platelets. ''')
+In this study the focus lies on erythroblasts which are an early stage of erythrocytes and the subdivision of leukocytes such as neutrophils, basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as above mentioned platelets, as shown in the following images. ''')
     st.image(img_home_01, caption = 'different types of blood cells')
     
 #Section EDA    
