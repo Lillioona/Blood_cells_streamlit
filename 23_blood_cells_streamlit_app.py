@@ -171,13 +171,13 @@ if selected == 'Prediction':
             st.subheader("Select the image for prediction")
             # load model
             if(model == 'ResNet'):
-                model = load_model('models/Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
+                model = 'R'#load_model('models/Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
                
             elif(model =='ResNet_MixedInput'):
-                model = load_model('models/final_mixed_input_model_ft_no_bpc.h5', custom_objects={'f1':f1})
+                model = 'R_M'#load_model('models/final_mixed_input_model_ft_no_bpc.h5', custom_objects={'f1':f1})
                 
             elif(model =='VGG16'):
-                model = load_model('models/vgg16_augmented_model.h5')
+                model = 'V'#load_model('models/vgg16_augmented_model.h5')
 
             #placeholder = st.empty()
             #with placeholder.container():
