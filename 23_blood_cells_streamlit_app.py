@@ -87,8 +87,20 @@ selected = option_menu(None, ["Introduction", "E.D.A.", "Modelisation", 'Predict
 #Section Home
 if selected == 'Introduction':
     st.header('Introduction')
-    st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
-    st.image(img_home_01, caption = 'img title')
+    st.markdown(''' Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary substances such as nutrients and oxygen to cells, removing waste and immune defense. 
+
+ By the change of their blood components in blood count many diseases can be discovered as well as their severity, 
+because of that blood is one of the most examined body fluid in the medical laboratory. 
+
+Especially for hematological diseases, the analysis of the morphology of blood is well known and used.
+However, to detect morphological differences among distinct types of normal and abnormal peripheral blood cells, it requires experience, skills and time.
+Therefore, it is very helpful for hematological diagnosis the use of deep learning models to recognize different types of  blood cells.
+
+
+The main object of this project is to develop a deep neural network to classify the different blood cells 
+In general blood cells can be divided into erythrocytes known as red blood cells , leukocytes known as white blood cells and the cell fragments called platelets or thrombocytes.
+In this study the focus lies on erythroblasts which are an early stage of erythrocytes and the subdivision of leukocytes such as neutrophils, basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as above mentioned platelets. ''')
+    st.image(img_home_01, caption = 'different types of blood cells')
     
 #Section EDA    
 if selected == 'E.D.A.':
