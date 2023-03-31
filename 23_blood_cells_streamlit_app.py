@@ -16,7 +16,7 @@ import base64
 
 #------------------------------------------------------------------------------------------------------------------------------------------
 # Overall page configuration
-st.set_page_config(page_title="BBC", page_icon=":drop_of_blood:", layout="centered", initial_sidebar_state="auto", menu_items=None, theme="dark")
+st.set_page_config(page_title="BBC", page_icon=":drop_of_blood:", layout="centered", initial_sidebar_state="auto", menu_items=None)
 
 #------------------------------------------------------------------------------------------------------------------------------------------
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
