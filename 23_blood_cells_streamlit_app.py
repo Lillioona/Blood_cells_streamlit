@@ -92,16 +92,16 @@ if selected == 'Introduction':
     st.header('Introduction')
     
     # URL of the GIF on GitHub
-    url = "https://github.com/Lillioona/Blood_cells_streamlit/blob/main/red-blood-cells-national-geographic.gif"
+    #url = "https://github.com/Lillioona/Blood_cells_streamlit/blob/main/red-blood-cells-national-geographic.gif"
 
     # Make a GET request to the URL
-    response = requests.get(url)
+    #response = requests.get(url)
 
     # Load the GIF from the response content
-    gif = Image.open(BytesIO(response.content))
+   # gif = Image.open(BytesIO(response.content))
 
     # Display the GIF on Streamlit
-    st.image(gif, use_column_width=True)
+   # st.image(gif, use_column_width=True)
     
     
     st.markdown(''' Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary substances such as nutrients and oxygen to cells, removing waste and immune defense. 
