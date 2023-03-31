@@ -87,7 +87,8 @@ selected = option_menu(None, ["Introduction", "E.D.A.", "Modelisation", 'Predict
 #Section Home
 if selected == 'Introduction':
     st.header('Introduction')
-    st.markdown(''' Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary substances such as nutrients and oxygen to cells, removing waste and immune defense. 
+    st.markdown(""" 
+    Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary substances such as nutrients and oxygen to cells, removing waste and immune defense. 
 
  By the change of their blood components in blood count many diseases can be discovered as well as their severity, 
 because of that blood is one of the most examined body fluid in the medical laboratory. 
@@ -98,15 +99,16 @@ Therefore, it is very helpful for hematological diagnosis the use of automatic b
 
 The main object of this project is to develop a deep learning models to recognize different types of blood cells.
 In general blood cells can be divided into erythrocytes known as red blood cells , leukocytes known as white blood cells and the cell fragments called platelets or thrombocytes.
-In this study the focus lies on erythroblasts which are an early stage of erythrocytes and the subdivision of leukocytes such as neutrophils, basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as mentioned above, platelets.''')
+In this study the focus lies on erythroblasts which are an early stage of erythrocytes and the subdivision of leukocytes such as neutrophils, basophils, eosinophils, monocytes, lymphocytes and immature granulocytes (IG) and the as mentioned above, platelets.
+""")
     st.image(img_home_01, caption = 'different types of blood cells')
-    st.markdown('''The data which is used is based on three different sources and is publicly available:
+    st.markdown("""
+        The data which is used is based on three different sources and is publicly available:
 
-Barcelona -A dataset of microscopic peripheral blood cell images for development of automatic recognition systems 2020
-
-Munich- A Single-cell Morphological Dataset of Leukocytes from AML Patients and Non-malignant Contols(AML-Cytomorhology LMU) 2022
-
-Rabbin- A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm 2022''')
+        - Barcelona -A dataset of microscopic peripheral blood cell images for development of automatic recognition systems, 2020
+        - Munich- A Single-cell Morphological Dataset of Leukocytes from AML Patients and Non-malignant Contols(AML-Cytomorhology LMU), 2022
+        - Rabbin- A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm, 2022
+        """)
 #Section EDA    
 if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
