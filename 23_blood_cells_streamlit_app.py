@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pickle
+import pandas as pd
 
 from streamlit_option_menu import option_menu
 from os import listdir     
@@ -126,6 +127,11 @@ In this study the focus lies on erythroblasts which are an early stage of erythr
 #Section EDA    
 if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
+    
+    df = pd.read_csv("bcc_num_data.csv")
+    st.dataframe(df)
+    
+    
     st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
     st.image(img_EDA_01, caption = 'img title')
     st.image(img_EDA_02, caption = 'img title')    
