@@ -1,3 +1,4 @@
+#imports
 import streamlit as st
 import numpy as np
 import pickle
@@ -11,56 +12,13 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 
 import requests
-
 import base64
 
-
+#------------------------------------------------------------------------------------------------------------------------------------------
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
-def prediction(file):
-    if file is not None:
-            image_data = Image.open(file)            
-            st.image(image_data, width=180)
- 
-            size = (360,360)    
-            image = ImageOps.fit(image_data, size, Image.BICUBIC)
-            image = np.asarray(image)
 
-            img = image[:, :, ::-1]
-            #img_resize = (cv2.resize(img, dsize=(75, 75),    interpolation=cv2.INTER_CUBIC))/255
-
-            img_reshape = img[np.newaxis,...]
-            prediction = model.predict(img_reshape)
-
-            predicted_class = np.argmax(prediction)
-            #st.write(predicted_class)
-            true_classes_list = ['basophil',
-                                        'eosinophil',
-                                        'erythroblast',
-                                        'ig',
-                                        'lymphocyte',
-                                        'monocyte',
-                                        'neutrophil',
-                                        'platelet']
-            st.write(f'This image most likely belongs to {true_classes_list[predicted_class]} with a probability of {prediction.max()}%')
-          
-
-    
-def list_images(directory, file_type):
-    directory += file_type
-    files = listdir(directory)
-    files[0] = "Select from list"
-    file = st.selectbox("Pick an image to test",files) 
-    return file
-        
-def f1(y_true, y_pred):    
-    def recall_m(y_true, y_pred):
-        TP = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
-        Positives = K.sum(K.round(K.clip(y_true, 0, 1)))
-        
-        recall = TP / (Positives+K.epsilon())    
-        return recall   
-    
-#images
+#------------------------------------------------------------------------------------------------------------------------------------------ 
+# open images to display (maybe add them to corresponding section for clarity/structure
 img_home_01 = Image.open('images/cell_images.png')
 img_EDA_01 = Image.open('images/EDA_01.png')
 img_EDA_02 = Image.open('images/EDA_02.png')
@@ -74,18 +32,22 @@ Analysis_07_Amri = Image.open('images/Analysis_07_Amri.png')
 Analysis_08_Amri = Image.open('images/Analysis_08_Amri.png')
 Analysis_09_Amri = Image.open('images/analysis_09_Amri.png')
 
-#Title of the Page
+#------------------------------------------------------------------------------------------------------------------------------------------
+# Overall page configuration
+st.set_page_config(page_title="BCC", page_icon=":Blood Drop:", layout="wide", theme="dark")
+
+# Title of the Page
 Header = st.container()
 with Header:
     st.title('Automatic Blood Cell Recognition')
 
-
-# horizontal menu
+# Horizontal menu
 selected = option_menu(None, ["Introduction", "E.D.A.", "Modelisation", 'Prediction', 'Perspectives', 'About'], 
     icons=["house-door", "bar-chart", "wrench", 'upload', 'search', 'info-circle'], 
     menu_icon="droplet", default_index=0, orientation="horizontal")
 
-#Section Home
+#------------------------------------------------------------------------------------------------------------------------------------------
+# Section Home
 if selected == 'Introduction':
     st.header('Introduction')
     
@@ -104,23 +66,26 @@ if selected == 'Introduction':
     
     st.markdown(''' Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary substances such as nutrients and oxygen to cells, removing waste and immune defense. 
 
- By the change of their blood components in blood count many diseases can be discovered as well as their severity, 
-because of that blood is one of the most examined body fluid in the medical laboratory. 
+    By the change of their blood components in blood count many diseases can be discovered as well as their severity, 
+    because of that blood is one of the most examined body fluid in the medical laboratory. 
 
-Especially for hematological diseases, the analysis of the morphology of blood is well known and used in form of blood smear review.
-However, to detect morphological differences between distinct types of normal and abnormal peripheral blood cells, it requires experience, skills and time.
-Therefore, it is very helpful for hematological diagnosis the use of automatic blood cell recognition system.
+    Especially for hematological diseases, the analysis of the morphology of blood is well known and used in form of blood smear review.
+    However, to detect morphological differences between distinct types of normal and abnormal peripheral blood cells, it requires experience, skills and time.
+    Therefore, it is very helpful for hematological diagnosis the use of automatic blood cell recognition system.
 
-The main object of this project is to develop a deep learning models to recognize different types of blood cells.
-In general blood cells can be divided into erythrocytes known as red blood cells , leukocytes known as white blood cells and the cell fragments called platelets or thrombocytes.
-In this study the focus lies on erythroblasts which are an early stage of erythrocytes and the subdivision of leukocytes such as neutrophils, basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as mentioned above, platelets.''')
+    The main object of this project is to develop a deep learning models to recognize different types of blood cells.
+    In general blood cells can be divided into erythrocytes known as red blood cells , leukocytes known as white blood cells and the cell fragments called platelets or thrombocytes.
+    In this study the focus lies on erythroblasts which are an early stage of erythrocytes and the subdivision of leukocytes such as neutrophils, basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as mentioned above, platelets.''')
+    
     st.image(img_home_01, caption = 'different types of blood cells')
+    
     st.markdown("""
         The data which is used is based on three different sources and is publicly available:
         - Barcelona -A dataset of microscopic peripheral blood cell images for development of automatic recognition systems, 2020
         - Munich - A Single-cell Morphological Dataset of Leukocytes from AML Patients and Non-malignant Contols(AML-Cytomorhology LMU), 2022
         - Rabbin - A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm, 2022
         """)
+    
 #Section EDA    
 if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
@@ -139,6 +104,7 @@ if selected == 'Modelisation':
     st.header('Modelisation')
     st.markdown('In the following we present the models obtaining the best prediction results:')
     st.subheader('ResNet50V2 as base model')
+    
     st.markdown(
         """
         Simple model:
@@ -202,7 +168,7 @@ if selected == 'Prediction':
     st.subheader("Choose the model for prediction")
    
        
-               
+
            
           #  col1, col2 = st.columns(2)
             # load dataset 1
@@ -214,8 +180,50 @@ if selected == 'Prediction':
         #        st.write("Select images")
 
 
-         
-    
+# function for a model to predict blood cell from an image
+def prediction(file):
+    if file is not None:
+            image_data = Image.open(file)            
+            st.image(image_data, width=180)
+ 
+            size = (360,360)    
+            image = ImageOps.fit(image_data, size, Image.BICUBIC)
+            image = np.asarray(image)
+
+            img = image[:, :, ::-1]
+            #img_resize = (cv2.resize(img, dsize=(75, 75),    interpolation=cv2.INTER_CUBIC))/255
+
+            img_reshape = img[np.newaxis,...]
+            prediction = model.predict(img_reshape)
+
+            predicted_class = np.argmax(prediction)
+            #st.write(predicted_class)
+            true_classes_list = ['basophil',
+                                        'eosinophil',
+                                        'erythroblast',
+                                        'ig',
+                                        'lymphocyte',
+                                        'monocyte',
+                                        'neutrophil',
+                                        'platelet']
+            st.write(f'This image most likely belongs to {true_classes_list[predicted_class]} with a probability of {prediction.max()}%')   
+
+# list all available images to make predicitions on    
+def list_images(directory, file_type):
+    directory += file_type
+    files = listdir(directory)
+    files[0] = "Select from list"
+    file = st.selectbox("Pick an image to test",files) 
+    return file
+
+# calculate f1 score
+def f1(y_true, y_pred):    
+    def recall_m(y_true, y_pred):
+        TP = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+        Positives = K.sum(K.round(K.clip(y_true, 0, 1)))
+        
+        recall = TP / (Positives+K.epsilon())    
+        return recall       
          
 #Section Perspectives    
 if selected == 'Perspectives':
