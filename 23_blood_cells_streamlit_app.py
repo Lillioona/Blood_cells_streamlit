@@ -81,7 +81,7 @@ with Header:
 
 # horizontal menu
 selected = option_menu(None, ["Introduction", "E.D.A.", "Modelisation", 'Prediction', 'Perspectives', 'About'], 
-    icons=["house-door", "bar-chart", "flask", 'upload', 'search', 'info-circle'], 
+    icons=["house-door", "bar-chart", "wrench", 'upload', 'search', 'info-circle'], 
     menu_icon="droplet", default_index=0, orientation="horizontal")
 
 #Section Home
