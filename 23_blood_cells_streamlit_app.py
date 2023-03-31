@@ -34,7 +34,7 @@ Analysis_09_Amri = Image.open('images/analysis_09_Amri.png')
 
 #------------------------------------------------------------------------------------------------------------------------------------------
 # Overall page configuration
-st.set_page_config(page_title="BCC", page_icon=None, layout="wide", theme="dark")
+#st.set_page_config(page_title="BCC", page_icon=None, layout="wide", theme="dark")
 
 # Title of the Page
 Header = st.container()
