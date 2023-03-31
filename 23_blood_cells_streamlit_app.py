@@ -1,9 +1,9 @@
+#imports
+import streamlit as st
+
 # Overall page configuration
 st.set_page_config(page_title="BCC", page_icon=":syringe:", layout="wide", theme="dark")
 
-#------------------------------------------------------------------------------------------------------------------------------------------
-#imports
-import streamlit as st
 import numpy as np
 import pickle
 import pandas as pd
