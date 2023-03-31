@@ -1,3 +1,7 @@
+# Overall page configuration
+st.set_page_config(page_title="BCC", page_icon=":drop of blood:", layout="wide", theme="dark")
+
+#------------------------------------------------------------------------------------------------------------------------------------------
 #imports
 import streamlit as st
 import numpy as np
@@ -14,9 +18,6 @@ from tensorflow.keras.models import load_model
 import requests
 import base64
 
-#------------------------------------------------------------------------------------------------------------------------------------------
-# Overall page configuration
-st.set_page_config(page_title="BCC", page_icon=":drop of blood:", layout="wide", theme="dark")
 
 #------------------------------------------------------------------------------------------------------------------------------------------
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
