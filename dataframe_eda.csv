@@ -1,4 +1,4 @@
-,name,origin,label,dim,height,width,img_lum,img_bright
+,Image_Name,Origin,Label,Shape,Height,Width,Luminosity,Brightness
 0,BA_454831.jpg,Munich,Basophil,"(363, 360, 3)",363,360,195.5301774691358,194.36623456790124
 1,20190526_170409_0.jpg,Raabin,Basophil,"(575, 575, 3)",575,575,125.95773148148149,120.09626543209876
 2,BA_765277.jpg,Munich,Basophil,"(363, 360, 3)",363,360,183.38440586419753,181.14390432098764
