@@ -100,13 +100,12 @@ The main object of this project is to develop a deep learning models to recogniz
 In general blood cells can be divided into erythrocytes known as red blood cells , leukocytes known as white blood cells and the cell fragments called platelets or thrombocytes.
 In this study the focus lies on erythroblasts which are an early stage of erythrocytes and the subdivision of leukocytes such as neutrophils, basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as mentioned above, platelets.''')
     st.image(img_home_01, caption = 'different types of blood cells')
-    st.markdown('''The data which is used is based on three different sources and is publicly available:
-
-Barcelona -A dataset of microscopic peripheral blood cell images for development of automatic recognition systems 2020
-
-Munich- A Single-cell Morphological Dataset of Leukocytes from AML Patients and Non-malignant Contols(AML-Cytomorhology LMU) 2022
-
-Rabbin- A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm 2022''')
+    st.markdown("""
+        The data which is used is based on three different sources and is publicly available:
+        - Barcelona -A dataset of microscopic peripheral blood cell images for development of automatic recognition systems, 2020
+        - Munich - A Single-cell Morphological Dataset of Leukocytes from AML Patients and Non-malignant Contols(AML-Cytomorhology LMU), 2022
+        - Rabbin - A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm, 2022
+        """)
 #Section EDA    
 if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
@@ -201,19 +200,21 @@ if selected == 'Prediction':
 #Section Perspectives    
 if selected == 'Perspectives':
     st.header('Perspectives')
-    st.markdown('''The role of machine learning methods in intelligent medical diagnostics is becoming more and more present these days.
-    And deep neural networks are revolutionizing the medical diagnosis process rapidly.
+    st.markdown("""
+        The role of machine learning methods in intelligent medical diagnostics is becoming more and more present these days.
+        And deep neural networks are revolutionizing the medical diagnosis process rapidly.
 
+         - in reality,there is a wider spectrum of blood cell types, regarding to subcategories of immature granulocytes and other early stages of blood cell.
+         In this project the focus was to detect 8 different blood cells types.
 
- -in reality,there is a wider spectrum of blood cell types, regarding to subcategories of immature granulocytes and other early stages of blood cell.
- In this project the focus was to detect 8 different blood cells types.
+        - the training data set should be as diverse and precise as possible to classify the blood cells.
 
--the training data set should be as diverse and precise as possible to classify the blood cells.
+        - different sources can considerly change the outcome of images, like the different medical devices, microscope and camera,
+        and the method of processing the blood cells, the use of stain.
 
--different sources can considerly change the outcome of images, like the different medical devices, microscope and camera,
-and the method of processing the blood cells, the use of stain.
-
--the dataset can be used to recognize the blood cell type and trained further to classify other types of abnormal cells.''')
+        - the dataset can be used to recognize the blood cell type and trained further to classify other types of abnormal cells.
+        """)
+    
 #Section About    
 if selected == 'About':
     st.header('About')
