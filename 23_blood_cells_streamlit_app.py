@@ -2,7 +2,7 @@
 import streamlit as st
 
 # Overall page configuration
-st.set_page_config(page_title="BBC", page_icon=None, layout="wide", initial_sidebar_state="auto", menu_items=None)
+st.set_page_config(page_title="BBC", page_icon=":drop_of_blood:", layout="centered", initial_sidebar_state="auto", menu_items=None)
 
 import numpy as np
 import pickle
