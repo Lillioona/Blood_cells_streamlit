@@ -9,6 +9,9 @@ from PIL import Image, ImageOps
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 
+import requests
+from io import BytesIO
+
 try:
     model = load_model('Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
 except:
@@ -87,6 +90,20 @@ selected = option_menu(None, ["Introduction", "E.D.A.", "Modelisation", 'Predict
 #Section Home
 if selected == 'Introduction':
     st.header('Introduction')
+    
+    # URL of the GIF on GitHub
+    url = "https://github.com/Lillioona/Blood_cells_streamlit/blob/main/red-blood-cells-national-geographic.gif"
+
+    # Make a GET request to the URL
+    response = requests.get(url)
+
+    # Load the GIF from the response content
+    gif = Image.open(BytesIO(response.content))
+
+    # Display the GIF on Streamlit
+    st.image(gif, use_column_width=True)
+    
+    
     st.markdown(''' Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary substances such as nutrients and oxygen to cells, removing waste and immune defense. 
 
  By the change of their blood components in blood count many diseases can be discovered as well as their severity, 
