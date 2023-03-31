@@ -5,3 +5,4 @@ tensorflow
 tensorflow_intel
 tensorboard
 imageio
+pandas==1.5.3
