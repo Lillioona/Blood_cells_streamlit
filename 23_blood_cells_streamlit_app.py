@@ -15,6 +15,10 @@ import requests
 import base64
 
 #------------------------------------------------------------------------------------------------------------------------------------------
+# Overall page configuration
+st.set_page_config(page_title="BCC", page_icon=":drop of blood:", layout="wide", theme="dark")
+
+#------------------------------------------------------------------------------------------------------------------------------------------
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
 
 #------------------------------------------------------------------------------------------------------------------------------------------ 
@@ -33,9 +37,6 @@ Analysis_08_Amri = Image.open('images/Analysis_08_Amri.png')
 Analysis_09_Amri = Image.open('images/analysis_09_Amri.png')
 
 #------------------------------------------------------------------------------------------------------------------------------------------
-# Overall page configuration
-#st.set_page_config(page_title="BCC", page_icon=None, layout="wide", theme="dark")
-
 # Title of the Page
 Header = st.container()
 with Header:
