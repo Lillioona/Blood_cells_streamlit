@@ -95,15 +95,15 @@ if selected == 'Introduction':
     # URL of the GIF on GitHub
     #url = "https://github.com/Lillioona/Blood_cells_streamlit/blob/main/red-blood-cells-national-geographic.gif"
 
-    file_ = open("red-blood-cells-national-geographic.gif", "rb")
-    contents = file_.read()
-    data_url = base64.b64encode(contents).decode("utf-8")
-    file_.close()
+    #file_ = open("red-blood-cells-national-geographic.gif", "rb")
+    #contents = file_.read()
+    #data_url = base64.b64encode(contents).decode("utf-8")
+    #file_.close()
 
-    st.markdown(
-    f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
-    unsafe_allow_html=True,
-    )
+    #st.markdown(
+    #f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
+    #unsafe_allow_html=True,
+    #)
     
     st.markdown(''' Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary substances such as nutrients and oxygen to cells, removing waste and immune defense. 
 
