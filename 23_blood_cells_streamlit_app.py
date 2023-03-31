@@ -128,8 +128,8 @@ In this study the focus lies on erythroblasts which are an early stage of erythr
 if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
     
-    #df = pd.read_csv("bcc_num_data.csv", encoding='iso-8859-1')
-    #st.dataframe(df)
+    df = pd.read_csv("bcc_num_data.csv", encoding='utf-8', header = 0, sep = ",")
+    st.dataframe(df)
     
     
     st.markdown('text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text')
