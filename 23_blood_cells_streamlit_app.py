@@ -81,7 +81,7 @@ with Header:
 
 # horizontal menu
 selected = option_menu(None, ["Introduction", "E.D.A.", "Modelisation", 'Prediction', 'Perspectives', 'About'], 
-    icons=["house-door", "bar-chart", "settings", 'droplet', 'upload', 'info'], 
+    icons=["house-door", "droplet", "droplet", 'droplet', 'droplet', 'envelope'], 
     menu_icon="droplet", default_index=0, orientation="horizontal")
 
 #Section Home
@@ -201,19 +201,20 @@ if selected == 'Prediction':
 #Section Perspectives    
 if selected == 'Perspectives':
     st.header('Perspectives')
-    st.markdown('''The role of machine learning methods in intelligent medical diagnostics is becoming more and more present these days.
-    And deep neural networks are revolutionizing the medical diagnosis process rapidly.
+    st.markdown("""
+        The role of machine learning methods in intelligent medical diagnostics is becoming more and more present these days.
+        And deep neural networks are revolutionizing the medical diagnosis process rapidly.
 
+         - in reality,there is a wider spectrum of blood cell types, regarding to subcategories of immature granulocytes and other early stages of blood cell.
+         In this project the focus was to detect 8 different blood cells types.
 
- -in reality,there is a wider spectrum of blood cell types, regarding to subcategories of immature granulocytes and other early stages of blood cell.
- In this project the focus was to detect 8 different blood cells types.
+        - the training data set should be as diverse and precise as possible to classify the blood cells.
 
--the training data set should be as diverse and precise as possible to classify the blood cells.
+        - different sources can considerly change the outcome of images, like the different medical devices, microscope and camera,
+        and the method of processing the blood cells, the use of stain.
 
--different sources can considerly change the outcome of images, like the different medical devices, microscope and camera,
-and the method of processing the blood cells, the use of stain.
-
--the dataset can be used to recognize the blood cell type and trained further to classify other types of abnormal cells.''')
+        - the dataset can be used to recognize the blood cell type and trained further to classify other types of abnormal cells.
+        """)
 #Section About    
 if selected == 'About':
     st.header('About')
