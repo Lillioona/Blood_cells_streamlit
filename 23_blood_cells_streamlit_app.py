@@ -11,7 +11,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 
 import requests
-from io import BytesIO
+
 import base64
 
 
@@ -41,7 +41,7 @@ def prediction(file):
                                         'monocyte',
                                         'neutrophil',
                                         'platelet']
-            st.write('This image most likely belongs to ', true_classes_list[predicted_class])
+            st.write(f'This image most likely belongs to {true_classes_list[predicted_class]} with a probability of {prediction.max()}%')
           
 
     
