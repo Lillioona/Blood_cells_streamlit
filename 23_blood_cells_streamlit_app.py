@@ -2,7 +2,7 @@
 import streamlit as st
 
 # Overall page configuration
-st.set_page_config(page_title="BCC", page_icon=":syringe:", layout="wide", theme="dark")
+st.set_page_config(page_title=None, page_icon=None, layout="centered", initial_sidebar_state="auto", menu_items=None)
 
 import numpy as np
 import pickle
