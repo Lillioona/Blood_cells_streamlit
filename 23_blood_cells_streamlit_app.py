@@ -111,7 +111,7 @@ if selected == 'Introduction':
 because of that blood is one of the most examined body fluid in the medical laboratory. 
 
 Especially for hematological diseases, the analysis of the morphology of blood is well known and used in form of blood smear review.
-However, to detect morphological differences among distinct types of normal and abnormal peripheral blood cells, it requires experience, skills and time.
+However, to detect morphological differences between different types of normal and abnormal peripheral blood cells, it requires experience, skills and time.
 Therefore, it is very helpful for hematological diagnosis the use of automatic blood cell recognition system.
 
 The main object of this project is to develop a deep learning models to recognize different types of blood cells.
