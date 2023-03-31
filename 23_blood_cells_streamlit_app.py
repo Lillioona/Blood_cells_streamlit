@@ -128,7 +128,7 @@ In this study the focus lies on erythroblasts which are an early stage of erythr
 if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
     
-    df = pd.read_csv("dataframe_eda", index_col=0)
+    df = pd.read_csv("dataframe_eda.csv", index_col=0)
     st.dataframe(df)
     
     
