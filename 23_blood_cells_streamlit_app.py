@@ -205,7 +205,7 @@ if selected == 'Perspectives':
     And deep neural networks are revolutionizing the medical diagnosis process rapidly.
 
 
- in reality,there is a wider spectrum of blood cell types, regarding to subcategories of immature granulocytes and other early stages of blood cell.
+ -in reality,there is a wider spectrum of blood cell types, regarding to subcategories of immature granulocytes and other early stages of blood cell.
  In this project the focus was to detect 8 different blood cells types.
 
 -the training data set should be as diverse and precise as possible to classify the blood cells.
