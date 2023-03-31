@@ -1,5 +1,5 @@
 # Overall page configuration
-st.set_page_config(page_title="BCC", page_icon=":drop of blood:", layout="wide", theme="dark")
+st.set_page_config(page_title="BCC", page_icon=":drop_of_blood:", layout="wide", theme="dark")
 
 #------------------------------------------------------------------------------------------------------------------------------------------
 #imports
