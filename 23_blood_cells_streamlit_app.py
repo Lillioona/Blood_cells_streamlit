@@ -14,10 +14,6 @@ import requests
 from io import BytesIO
 import base64
 
-try:
-    model = load_model('Best_model_ft_5th_layer.h5', custom_objects={'f1':f1})
-except:
-    st.error('xxx')
 
 #streamlit run "C:\Users\User\Desktop\streamlit\23_blood_cells_streamlit_app.py"
 def prediction(file):
