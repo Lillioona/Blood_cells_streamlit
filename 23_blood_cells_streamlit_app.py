@@ -114,8 +114,8 @@ if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
     st.markdown(
         """
-        Three open source datasets were used to achieve this project's objective. The total volume of these datasets was 52,000 images. 
-         The classification into one of these eight classes was the target of this project’s model. 
+        Three open source datasets were used to achieve this project's objective. In total they contained 52,000 images of blood cells. The classification into one of 
+        eight cell classes was the target of this project’s model.
         """
     )
     with st.expander("Further informations on the datasets"): 
@@ -161,7 +161,7 @@ if selected == 'E.D.A.':
     
     st.subheader('Distribution of the image sizes')
     st.markdown('The Image size veried between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 for the continuous process.')
-    st.image(img_EDA_01, caption = 'img title')
+    st.image(img_EDA_01)
     st.image(img_EDA_02, caption = 'img title')    
     st.image(img_EDA_03, caption = 'img title')
     
