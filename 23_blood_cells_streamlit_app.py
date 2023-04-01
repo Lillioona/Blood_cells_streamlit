@@ -168,8 +168,8 @@ if selected == 'E.D.A.':
     
     st.subheader('Brightness')
     st.markdown("""
-    The brightness is calculated from the RGB pixel distribution. As shown which showen differences between the classes
-                """)
+    The brightness is calculated by the RGB pixel distribution, which show different characteristics according to the classes. 
+    """)
     st.image(img_EDA_02, caption = 'RGB pixel distribution of the images per class') 
     st.subheader('Luminance')
     st.markdown("""
