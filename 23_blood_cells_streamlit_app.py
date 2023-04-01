@@ -171,13 +171,13 @@ if selected == 'E.D.A.':
     The image size varied between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 for the 
                 continuous process.
                 """)
-    st.image(img_EDA_02, caption = 'RGB pixel distribution of the images') 
+    st.image(img_EDA_02, caption = 'RGB pixel distribution of the images per class') 
     st.subheader('Luminance')
     st.markdown("""
     The image size varied between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 for the 
                 continuous process.
                 """)
-    st.image(img_EDA_03, caption = 'grayscale pixel distribution of the images')
+    st.image(img_EDA_03, caption = 'greyscale pixel distribution of the images per class')
     
 #------------------------------------------------------------------------------------------------------------------------------------------    
 #Section Models     
