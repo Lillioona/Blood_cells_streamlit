@@ -113,7 +113,7 @@ if selected == 'Introduction':
 if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
     st.subheader
-    s.markdown(
+    st.markdown(
         """
         Three different publicly available datasets were used to achieve this project's objective. The total accumulated volume of all three datasets was 52,000 images. 
          The classification into one of these eight classes was 
