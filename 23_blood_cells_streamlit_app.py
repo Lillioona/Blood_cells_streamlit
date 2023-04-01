@@ -277,7 +277,7 @@ if selected == 'Modelisation':
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 # Necessary function and variables
-#MODEL_URL = "https://github.com/Lillioona/Blood_cells_streamlit/blob/main/Best_model_ft_5th_layer.h5"
+MODEL_URL = "https://github.com/Lillioona/Blood_cells_streamlit/blob/main/models/vgg16_augmented_model.h5"
 MODEL = "Best_model_ft_5th_layer.h5"
 
 IMG_SIZE = (360,360) 
@@ -293,8 +293,8 @@ CLASS_LABELS = ['basophil',
 
 @st.cache(allow_output_mutation=True)
 def load_model():
-    #model_file = BytesIO(requests.get(MODEL_URL).content)
-    model = tf.keras.models.load_model(MODEL)
+    model_file = BytesIO(requests.get(MODEL_URL).content)
+    model = tf.keras.models.load_model(model_file)
     return model
 
 #load the model to use for predictions
