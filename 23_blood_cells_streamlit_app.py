@@ -115,7 +115,8 @@ if selected == 'E.D.A.':
     st.markdown(
         """
         Three different publicly available datasets were used to achieve this project's objective. The total volume of these datasets was 52,000 images. 
-         The classification into one of these eight classes was the target of this project’s model. An extract of the dataset is displayed below:
+         The classification into one of these eight classes was the target of this project’s model. An extract of the dataset is displayed below it further contains
+         features gatherd from the files:
         """
     )
     with st.expander("Further informations to the Datasets"): 
