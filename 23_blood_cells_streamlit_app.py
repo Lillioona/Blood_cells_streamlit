@@ -65,7 +65,9 @@ if selected == 'Introduction':
     unsafe_allow_html=True,
     )
     
-    st.markdown(''' Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary 
+    st.markdown(''' 
+    
+    Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary 
     substances such as nutrients and oxygen to cells, removing waste and immune defense. 
 
     By the change of their blood components in blood count many diseases can be discovered as well as their severity, 
