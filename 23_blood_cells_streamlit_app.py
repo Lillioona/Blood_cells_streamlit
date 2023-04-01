@@ -145,14 +145,14 @@ if selected == 'E.D.A.':
             """
         )
         
-            st.subheader('Munich')
-            st.markdown(
-                """
-                Depending on the source, the number of different blood cell classes varied between 8 to 13 classes. Based on the provided descriptions for each dataset and their 
-                classes, it was decided to merge them into a total of the 8 classes as described for the Barcelona dataset. neutrophils, eosinophils, basophils, lymphocytes, 
-                monocytes, immature granulocytes (promyelocytes, myelocytes, and metamyelocytes), erythroblasts and platelets or thrombocytes.
-                """
-            )
+        st.subheader('Classes')
+        st.markdown(
+            """
+            Depending on the source, the number of different blood cell classes varied between 8 to 13 classes. Based on the provided descriptions for each dataset and their 
+            classes, it was decided to merge them into a total of the 8 classes as described for the Barcelona dataset. neutrophils, eosinophils, basophils, lymphocytes, 
+            monocytes, immature granulocytes (promyelocytes, myelocytes, and metamyelocytes), erythroblasts and platelets or thrombocytes.
+            """
+        )
     df = pd.read_csv("dataframe_eda.csv", index_col=0)
     st.dataframe(df)
     
