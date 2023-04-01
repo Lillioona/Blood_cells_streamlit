@@ -118,7 +118,7 @@ if selected == 'E.D.A.':
          The classification into one of these eight classes was the target of this project’s model. 
         """
     )
-    with st.expander("Further informations to the Datasets"): 
+    with st.expander("Further informations on the datasets"): 
         st.subheader('Barcelona')
         st.markdown(
             """
@@ -171,7 +171,7 @@ if selected == 'Modelisation':
     st.header('Modelisation')
     st.markdown('In the following we present the models obtaining the best prediction results:')         
     
-    with st.expander("Further informations to the modelisation process"): 
+    with st.expander("Further informations the modelisation process"): 
         st.subheader('First steps')
         st.markdown(
             """
