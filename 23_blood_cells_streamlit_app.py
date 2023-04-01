@@ -7,6 +7,7 @@ import pandas as pd
 from streamlit_option_menu import option_menu
 from os import listdir     
 from PIL import Image, ImageOps
+from io import BytesIO
 
 import tensorflow as tf
 from tensorflow.keras.models import load_model
@@ -188,14 +189,58 @@ if selected == 'Modelisation':
 
     st.image(Analysis_09_Amri, caption = 'VGG16 Confusion Matrix')
 #------------------------------------------------------------------------------------------------------------------------------------------   
-#Section Prediction    
-if selected == 'Prediction':
-    st.header('Prediction')
-    st.subheader("Choose the model for prediction")
-   
-       
+#Section Prediction 
 
-           
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# Necessary function and variables
+MODEL_URL = "https://github.com/Lillioona/Blood_cells_streamlit/blob/main/Best_model_ft_5th_layer.h5"
+
+IMG_SIZE = (360,360) 
+
+CLASS_LABELS = ['basophil',
+                'eosinophil',
+                'erythroblast',
+                'ig',
+                'lymphocyte',
+                'monocyte',
+                'neutrophil',
+                'platelet']
+
+@st.cache(allow_output_mutation=True)
+def load_model():
+    model_file = BytesIO(requests.get(MODEL_URL).content)
+    model = tf.keras.models.load_model(model_file)
+    return model
+
+#load the model to use for predictions
+model = load_model()
+
+# Preprocess image
+def preprocess_image(image):
+    if file is not None:
+        image = image.resize(IMG_SIZE)
+        image = tf.keras.preprocessing.image.img_to_array(image)
+        image = tf.keras.applications.mobilenet_v2.preprocess_input(image)
+        return image
+    
+# Function to make predictions
+def predict(image):
+    if file is not None:
+        image = preprocess_image(image)
+        predictions = model.predict(tf.expand_dims(image, axis=0))[0]
+        predicted_class = CLASS_LABELS[predictions.argmax()]
+        confidence = predictions.max()
+        return predicted_class, confidence
+    
+# Calculate f1 score
+def f1(y_true, y_pred):    
+    def recall_m(y_true, y_pred):
+        TP = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+        Positives = K.sum(K.round(K.clip(y_true, 0, 1)))
+        
+        recall = TP / (Positives+K.epsilon())    
+        return recall
+  
           #  col1, col2 = st.columns(2)
             # load dataset 1
        #     with col1:
@@ -205,36 +250,10 @@ if selected == 'Prediction':
         #    with col2:
         #        st.write("Select images")
 
+        
+          
 
-# function for a model to predict blood cell from an image
-def prediction(file):
-    if file is not None:
-            image_data = Image.open(file)            
-            st.image(image_data, width=180)
- 
-            size = (360,360)    
-            image = ImageOps.fit(image_data, size, Image.BICUBIC)
-            image = np.asarray(image)
-
-            img = image[:, :, ::-1]
-            #img_resize = (cv2.resize(img, dsize=(75, 75),    interpolation=cv2.INTER_CUBIC))/255
-
-            img_reshape = img[np.newaxis,...]
-            prediction = model.predict(img_reshape)
-
-            predicted_class = np.argmax(prediction)
-            #st.write(predicted_class)
-            true_classes_list = ['basophil',
-                                        'eosinophil',
-                                        'erythroblast',
-                                        'ig',
-                                        'lymphocyte',
-                                        'monocyte',
-                                        'neutrophil',
-                                        'platelet']
-            st.write(f'This image most likely belongs to {true_classes_list[predicted_class]} with a probability of {prediction.max()}%')   
-
-# list all available images to make predicitions on    
+# list all available images to make predicitions on (no images uploaded so far right?)   
 def list_images(directory, file_type):
     directory += file_type
     files = listdir(directory)
@@ -242,15 +261,19 @@ def list_images(directory, file_type):
     file = st.selectbox("Pick an image to test",files) 
     return file
 
-# calculate f1 score
-def f1(y_true, y_pred):    
-    def recall_m(y_true, y_pred):
-        TP = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
-        Positives = K.sum(K.round(K.clip(y_true, 0, 1)))
-        
-        recall = TP / (Positives+K.epsilon())    
-        return recall       
-
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+if selected == 'Prediction':
+    st.header('Prediction')
+    st.subheader("Choose a model to classify a blood cell image")
+    
+    image_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
+    
+    if image_file is not None:
+        image = Image.open(image_file)
+        st.image(image, caption="Uploaded Image", use_column_width=True)
+        predicted_class, confidence = predict(image)
+        st.write(f"Predicted class: {predicted_class}")
+        st.write(f"Confidence: {confidence:.2f}")
 #------------------------------------------------------------------------------------------------------------------------------------------
 #Section Perspectives    
 if selected == 'Perspectives':
