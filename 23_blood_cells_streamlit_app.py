@@ -115,7 +115,7 @@ if selected == 'E.D.A.':
     st.markdown(
         """
         Three open source datasets were used to achieve this project's objective. In total they contained 52,000 images of blood cells. The classification into one of 
-        eight cell classes was the target of this project’s model.
+        eight cell types was the target of this project’s model.
         """
     )
     with st.expander("Further informations on the datasets"): 
