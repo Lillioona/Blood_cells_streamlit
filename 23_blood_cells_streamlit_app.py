@@ -93,8 +93,7 @@ if selected == 'Introduction':
     - **Barcelona:** [A dataset of microscopic peripheral blood cell images for development of automatic recognition systems, 2020](https://data.mendeley.com/datasets/snkd93bnjr/1)
     - **Munich:** [A Single-cell Morphological Dataset of Leukocytes from AML Patients and Non-malignant Contols (AML-Cytomorhology LMU), 2022](https://faspex.cancerimagingarchive.net/aspera/faspex/external_deliveries/77?passcode=a6be8bf0a97ddb34fc0913f37b8180d8f7d616a7)
     - **Rabbin:** [A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm, 2022](http://dl.raabindata.com/Leukemia_Data/ALL/L1/)
-    </div>
-    """)
+    </div>""", unsafe_allow_html=True)
 
 #------------------------------------------------------------------------------------------------------------------------------------------
 #Section EDA    
