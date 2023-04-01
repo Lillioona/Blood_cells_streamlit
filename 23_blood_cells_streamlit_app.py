@@ -66,7 +66,7 @@ if selected == 'Introduction':
     )
     
     st.markdown(''' 
-    <br>
+    \n\n
     Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary 
     substances such as nutrients and oxygen to cells, removing waste and immune defense. 
 
@@ -82,13 +82,12 @@ if selected == 'Introduction':
     In general blood cells can be divided into erythrocytes known as red blood cells , leukocytes known as white blood cells and the cell fragments 
     called platelets or thrombocytes.
     In this study the focus lies on erythroblasts which are an early stage of erythrocytes and the subdivision of leukocytes such as neutrophils,
-    basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as mentioned above, platelets.''')
+    basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as mentioned above, platelets.\n''')
     
+    # image blood cells
     st.image(img_home_01, caption = 'The different types of blood cells to classify')
-    #left_co, right_co = st.columns(2)
-   # with left_co:
-      #  st.image(img_home_01, caption= "The different types of blood cells to classify", width=750)
-        
+    
+    #horizontal line
     st.markdown("<hr>", unsafe_allow_html=True)
     
     st.markdown("*The data which enabled this project was derived from three different sources. The entire data is publicly available:*")
