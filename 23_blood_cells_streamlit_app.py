@@ -3,6 +3,8 @@ import streamlit as st
 import numpy as np
 import pickle
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 from streamlit_option_menu import option_menu
 from os import listdir     
@@ -167,22 +169,22 @@ if selected == 'E.D.A.':
     #st.image(img_EDA_01)
     
     # set plot style
-    #sns.set_style('darkgrid')
+    sns.set_style('darkgrid')
 
     # create plot
-    #figure, axis = plt.subplots(figsize=(8,8), facecolor="#0e1117")
-    #axis.set_facecolor("#0e1117")
-    #axis.set_xlim([351,599])
-    #axis.set_ylim([351,599])
-    #axis.set_xlabel('Width', color='white')
-    #axis.set_ylabel('Height', color='white')
-    #axis.spines['top'].set_visible(False)
-    #axis.spines['right'].set_visible(False)
-    #axis.set_title("Original image resolution", fontdict={'color': "white"}, size= 18, pad=25)
-    #axis.tick_params(colors="white", bottom=True, left=True)
-    figure = sns.scatterplot(data=df, x='width', y='height',  hue='origin',
+    figure, axis = plt.subplots(figsize=(8,8), facecolor="#0e1117")
+    axis.set_facecolor("#0e1117")
+    axis.set_xlim([351,599])
+    axis.set_ylim([351,599])
+    axis.set_xlabel('Width', color='white')
+    axis.set_ylabel('Height', color='white')
+    axis.spines['top'].set_visible(False)
+    axis.spines['right'].set_visible(False)
+    axis.set_title("Original image resolution", fontdict={'color': "white"}, size= 18, pad=25)
+    axis.tick_params(colors="white", bottom=True, left=True)
+    ax = sns.scatterplot(data=df, x='width', y='height',  hue='origin',
                         palette='deep', size= 'origin', sizes=(100, 200))
-    #axis.legend(loc=(0.125,.82), frameon=True, fontsize="large")
+    axis.legend(loc=(0.125,.82), frameon=True, fontsize="large")
 
     # display plot in Streamlit
     st.pyplot(figure)
