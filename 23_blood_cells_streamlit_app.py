@@ -127,7 +127,7 @@ if selected == 'E.D.A.':
 #------------------------------------------------------------------------------------------------------------------------------------------    
 #Section Models     
 if selected == 'Modelisation':
-    st.header('Modelisation
+    st.header('Modelisation')
     st.markdown('In the following we present the models obtaining the best prediction results:')         
     
     with st.expander("Further informations to the modelisation process"): 
