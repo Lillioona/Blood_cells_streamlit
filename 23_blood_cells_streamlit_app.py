@@ -115,8 +115,7 @@ if selected == 'E.D.A.':
     st.markdown(
         """
         Three different publicly available datasets were used to achieve this project's objective. The total volume of these datasets was 52,000 images. 
-         The classification into one of these eight classes was the target of this project’s model. An extract of the dataset is displayed below it further contains
-         features gatherd from the files:
+         The classification into one of these eight classes was the target of this project’s model. 
         """
     )
     with st.expander("Further informations to the Datasets"): 
@@ -151,6 +150,11 @@ if selected == 'E.D.A.':
             monocytes, immature granulocytes (promyelocytes, myelocytes, and metamyelocytes), erythroblasts and platelets or thrombocytes.
             """
         )
+     st.markdown(
+        """
+        An extract of the combined dataset is displayed below it further contains features gatherd from the files:
+        """
+    )
     df = pd.read_csv("dataframe_eda.csv", index_col=0)
     st.dataframe(df)
     
