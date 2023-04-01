@@ -61,7 +61,7 @@ if selected == 'Introduction':
     file_.close()
 
     st.markdown(
-    f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
+    f'<div style="text-align:center;"><img src="data:image/gif;base64,{data_url}" alt="cat gif"></div>',
     unsafe_allow_html=True,
     )
     
@@ -82,7 +82,7 @@ if selected == 'Introduction':
     In this study the focus lies on erythroblasts which are an early stage of erythrocytes and the subdivision of leukocytes such as neutrophils,
     basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as mentioned above, platelets.''')
     
-    st.image(img_home_01, caption = 'different types of blood cells')
+    st.image(img_home_01, caption = 'different types of blood cells', align="center")
     
     st.markdown("<hr>", unsafe_allow_html=True)
     
