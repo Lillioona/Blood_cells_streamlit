@@ -153,7 +153,7 @@ if selected == 'E.D.A.':
         
     st.markdown(
     """
-    Extract of the combined dataset with features gatherd from the files:
+    Extract of the combined dataset with additional features gatherd from the files:
     """
     )
     df = pd.read_csv("dataframe_eda.csv", index_col=0)
