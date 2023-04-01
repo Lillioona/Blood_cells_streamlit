@@ -82,10 +82,10 @@ if selected == 'Introduction':
     In this study the focus lies on erythroblasts which are an early stage of erythrocytes and the subdivision of leukocytes such as neutrophils,
     basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as mentioned above, platelets.''')
     
-    #st.image(img_home_01, caption = 'different types of blood cells')
-    left_co, right_co = st.columns(2)
-    with left_co:
-        st.image(img_home_01, caption= "The different types of blood cells to classify", width=750)
+    st.image(img_home_01, caption = 'The different types of blood cells to classify')
+    #left_co, right_co = st.columns(2)
+   # with left_co:
+      #  st.image(img_home_01, caption= "The different types of blood cells to classify", width=750)
         
     st.markdown("<hr>", unsafe_allow_html=True)
     
