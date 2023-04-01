@@ -167,7 +167,7 @@ if selected == 'E.D.A.':
     #st.image(img_EDA_01)
     
     # set plot style
-    sns.set_style('darkgrid')
+    #sns.set_style('darkgrid')
 
     # create plot
     figure, axis = plt.subplots(figsize=(8,8), facecolor="#0e1117")
