@@ -150,6 +150,7 @@ if selected == 'E.D.A.':
             monocytes, immature granulocytes (promyelocytes, myelocytes, and metamyelocytes), erythroblasts and platelets or thrombocytes.
             """
         )
+        
      st.markdown(
         """
         An extract of the combined dataset is displayed below it further contains features gatherd from the files:
