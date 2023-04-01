@@ -112,7 +112,6 @@ if selected == 'Introduction':
 #Section EDA    
 if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
-    st.subheader
     st.markdown(
         """
         Three different publicly available datasets were used to achieve this project's objective. The total accumulated volume of all three datasets was 52,000 images. 
