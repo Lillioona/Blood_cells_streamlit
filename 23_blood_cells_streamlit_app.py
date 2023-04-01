@@ -321,9 +321,23 @@ def load_model():
     model = tf.keras.models.load_model(MODEL)
     return model
 
+# Calculate f1 score
+def f1(y_true, y_pred):    
+    def recall_m(y_true, y_pred):
+        TP = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+        Positives = K.sum(K.round(K.clip(y_true, 0, 1)))
+        
+        recall = TP / (Positives+K.epsilon())    
+        return recall
+
 #load the model to use for predictions
 try:
-    model = load_model()
+    #Create a dictionary mapping the function name to the function object
+    custom_objects = {'f1': f1}
+
+    # Load the Keras model using custom_object_scope
+    with tf.keras.utils.custom_object_scope(custom_objects):
+        model = load_model()
 
 except Exception as e:
     st.write(e)
@@ -345,14 +359,6 @@ def predict(image):
         confidence = predictions.max()
         return predicted_class, confidence
     
-# Calculate f1 score
-def f1(y_true, y_pred):    
-    def recall_m(y_true, y_pred):
-        TP = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
-        Positives = K.sum(K.round(K.clip(y_true, 0, 1)))
-        
-        recall = TP / (Positives+K.epsilon())    
-        return recall
   
           #  col1, col2 = st.columns(2)
             # load dataset 1
