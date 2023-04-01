@@ -147,8 +147,8 @@ if selected == 'Modelisation':
     st.subheader('Image Augmentation')
     st.markdown(
         """
-        Image augmentation can be usefull to train classification models with small datasets and prevent from overfitting, in this case it didn’t. The 
-        classical ImageDataGenerators droped the f1 score and resulted in continuously higher validation scores compared to training scores as well as 
+        Image augmentation can be usefull to train classification models with small datasets and reduce overfitting. In this case it didn’t. The 
+        classical ImageDataGenerators droped the f1 score and resulted in continuously higher validation scores compared to training scores, as well as 
         long runtimes. Considering that blood cell images tend to be recorded in standardized environments with similar methodologies, it was hypothesized 
         that too much data augmentation was decreasing performance of the model. Reducing the image augmentation to horizontal & vertical flips, as well 
         as random rotations in the form of an augmentation layer combined with rethinking the layer architecture resulted in the first model hitting above 
