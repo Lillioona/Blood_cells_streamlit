@@ -28,8 +28,8 @@ st.set_page_config(page_title="BCC", page_icon=":drop_of_blood:", layout="center
 # open images to display (maybe add them to corresponding section for clarity/structure
 img_home_01 = Image.open('images/Blood_cell_examples.png')
 img_EDA_01 = Image.open('images/Image_size.png')
-img_EDA_02 = Image.open('images/EDA_02.png')
-img_EDA_03 = Image.open('images/EDA_03.png')
+img_EDA_02 = Image.open('images/RGB_dist.png')
+img_EDA_03 = Image.open('images/Grey_dist.png')
 Analysis_01 = Image.open('images/Analysis_01.png')
 Analysis_02 = Image.open('images/Analysis_02.png')
 Analysis_04_mix = Image.open('images/Analysis_04_mix.png')
