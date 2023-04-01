@@ -114,7 +114,7 @@ if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
     st.markdown(
         """
-        Three different open source datasets were used to achieve this project's objective. The total volume of these datasets was 52,000 images. 
+        Three open source datasets were used to achieve this project's objective. The total volume of these datasets was 52,000 images. 
          The classification into one of these eight classes was the target of this project’s model. 
         """
     )
