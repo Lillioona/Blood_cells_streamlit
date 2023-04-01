@@ -3,6 +3,7 @@ import streamlit as st
 import numpy as np
 import pickle
 import pandas as pd
+import git
 
 from streamlit_option_menu import option_menu
 from os import listdir     
