@@ -85,7 +85,7 @@ if selected == 'Introduction':
     #st.image(img_home_01, caption = 'different types of blood cells')
     left_co, cent_co,last_co = st.columns(3)
     with cent_co:
-        st.image(img_home_01, caption= "The different types of blood cells to classify")
+        st.image(img_home_01, caption= "The different types of blood cells to classify", use_column_width="auto")
         
     st.markdown("<hr>", unsafe_allow_html=True)
     
