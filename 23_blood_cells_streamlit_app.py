@@ -115,7 +115,7 @@ if selected == 'E.D.A.':
     st.markdown(
         """
         Three open source datasets were used to achieve this project's objective. In total they contained 52,000 images of blood cells. The classification into one of 
-        eight cell types was the target of this project’s model.
+        eight blood cell types was the target of this project’s model.
         """
     )
     with st.expander("Further informations on the datasets"): 
@@ -160,7 +160,7 @@ if selected == 'E.D.A.':
     st.dataframe(df)
     
     st.subheader('Distribution of the image sizes')
-    st.markdown('The Image size veried between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 for the continuous process.')
+    st.markdown('The image size varied between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 for the continuous process.')
     st.image(img_EDA_01)
     st.image(img_EDA_02, caption = 'img title')    
     st.image(img_EDA_03, caption = 'img title')
