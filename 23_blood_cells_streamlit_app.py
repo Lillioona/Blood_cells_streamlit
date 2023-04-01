@@ -88,12 +88,17 @@ if selected == 'Introduction':
     
     st.markdown("The data which enabled this project was derived from three different sources. The entire data is publicly available:")
     
-    st.markdown("""
+     st.markdown("""
     <div style="text-align:center; background-color:black">
-    - **Barcelona:** [A dataset of microscopic peripheral blood cell images for development of automatic recognition systems, 2020](https://data.mendeley.com/datasets/snkd93bnjr/1)
-    - **Munich:** [A Single-cell Morphological Dataset of Leukocytes from AML Patients and Non-malignant Contols (AML-Cytomorhology LMU), 2022](https://faspex.cancerimagingarchive.net/aspera/faspex/external_deliveries/77?passcode=a6be8bf0a97ddb34fc0913f37b8180d8f7d616a7)
-    - **Rabbin:** [A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm, 2022](http://dl.raabindata.com/Leukemia_Data/ALL/L1/)
-    </div>""", unsafe_allow_html=True)
+    - **Barcelona:** A dataset of microscopic peripheral blood cell images for development of automatic recognition systems, 2020
+      <a href="https://data.mendeley.com/datasets/snkd93bnjr/1">https://data.mendeley.com/datasets/snkd93bnjr/1</a>
+    - **Munich:** A Single-cell Morphological Dataset of Leukocytes from AML Patients and Non-malignant Contols (AML-Cytomorhology LMU), 2022
+      <a href="https://faspex.cancerimagingarchive.net/aspera/faspex/external_deliveries/77?passcode=a6be8bf0a97ddb34fc0913f37b8180d8f7d616a7">https://faspex.cancerimagingarchive.net/aspera/faspex/external_deliveries/77?passcode=a6be8bf0a97ddb34fc0913f37b8180d8f7d616a7</a>
+    - **Rabbin:** A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm, 2022
+      <a href="http://dl.raabindata.com/Leukemia_Data/ALL/L1/">http://dl.raabindata.com/Leukemia_Data/ALL/L1/</a>
+    </div>
+    """, unsafe_allow_html=True)
+
 
 #------------------------------------------------------------------------------------------------------------------------------------------
 #Section EDA    
