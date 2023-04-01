@@ -193,7 +193,8 @@ if selected == 'Modelisation':
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 # Necessary function and variables
-MODEL_URL = "https://github.com/Lillioona/Blood_cells_streamlit/blob/main/Best_model_ft_5th_layer.h5"
+#MODEL_URL = "https://github.com/Lillioona/Blood_cells_streamlit/blob/main/Best_model_ft_5th_layer.h5"
+MODEL = "Best_model_ft_5th_layer.h5"
 
 IMG_SIZE = (360,360) 
 
@@ -205,13 +206,11 @@ CLASS_LABELS = ['basophil',
                 'monocyte',
                 'neutrophil',
                 'platelet']
-repo = git.Repo.clone_from("https://github.com/Lillioona/Blood_cells_streamlit.git", "tmp")
 
 @st.cache(allow_output_mutation=True)
-
 def load_model():
-    model_file = BytesIO(requests.get(MODEL_URL).content)
-    model = tf.keras.models.load_model(model_file)
+    #model_file = BytesIO(requests.get(MODEL_URL).content)
+    model = tf.keras.models.load_model(MODEL)
     return model
 
 #load the model to use for predictions
