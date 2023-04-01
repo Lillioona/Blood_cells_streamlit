@@ -143,14 +143,16 @@ if selected == 'Modelisation':
             errors working with the whole dataset of 52 000 images. 
             """
         )
-    st.subheader('Subsample')
-    st.markdown(
-        """
-        To solve imbalance and memory issues a subsample was created. Regarding the class with the smallest occurrence (Basophil, n = 1598) a total 
-        number of 12784 images was extracted, where now every class was evenly represented. This was done using pandas methods groupby and sample. The 
-        subsample was given to every member of the group to stay comparable in modelisation.
-        """
-    ) 
+    
+    with st.expander("Subsample"):    
+        st.subheader('Subsample')
+        st.markdown(
+            """
+            To solve imbalance and memory issues a subsample was created. Regarding the class with the smallest occurrence (Basophil, n = 1598) a total 
+            number of 12784 images was extracted, where now every class was evenly represented. This was done using pandas methods groupby and sample. The 
+            subsample was given to every member of the group to stay comparable in modelisation.
+            """
+        ) 
     st.subheader('Image Augmentation')
     st.markdown(
         """
