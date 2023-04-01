@@ -65,8 +65,9 @@ if selected == 'Introduction':
     unsafe_allow_html=True,
     )
     
+    st.write("")
+    
     st.markdown(''' 
-    <br>
     Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary 
     substances such as nutrients and oxygen to cells, removing waste and immune defense. 
 
