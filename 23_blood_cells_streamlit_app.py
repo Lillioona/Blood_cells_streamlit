@@ -144,7 +144,6 @@ if selected == 'E.D.A.':
             at Munich University Hospital between 2014 and 2017, as well as 100 patients without signs of hematological malignancy with an M8 digital microscope.
             """
         )
-        
         st.subheader('Classes')
         st.markdown(
             """
