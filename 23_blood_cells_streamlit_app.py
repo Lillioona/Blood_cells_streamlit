@@ -86,9 +86,9 @@ if selected == 'Introduction':
     
     st.markdown("<hr>", unsafe_allow_html=True)
     
-    st.markdown("The data which enabled this project was derived from three different sources. The entire data is publicly available:")
+    st.markdown("*The data which enabled this project was derived from three different sources. The entire data is publicly available:*")
     
-    st.markdown("""<div style="text-align:center; background-color:black">
+    st.markdown("""<div style="color:#696969">
     - **Barcelona:** A dataset of microscopic peripheral blood cell images for development of automatic recognition systems, 2020
       <a href="https://data.mendeley.com/datasets/snkd93bnjr/1">https://data.mendeley.com/datasets/snkd93bnjr/1</a>
     - **Munich:** A Single-cell Morphological Dataset of Leukocytes from AML Patients and Non-malignant Contols (AML-Cytomorhology LMU), 2022
