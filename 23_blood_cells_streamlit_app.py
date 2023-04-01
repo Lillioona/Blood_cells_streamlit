@@ -173,7 +173,7 @@ if selected == 'E.D.A.':
     st.image(img_EDA_02, caption = 'RGB pixel distribution of the images per class') 
     st.subheader('Luminance')
     st.markdown("""
-    The luminance is calculated from the greyscale pixel distribution.
+    The luminance is calculated by the greyscale pixel distribution.
                 """)
     st.image(img_EDA_03, caption = 'greyscale pixel distribution of the images per class')
     
