@@ -344,7 +344,7 @@ except Exception as e:
 
 # Preprocess image
 def preprocess_image(image):
-    if file is not None:
+    if image_file is not None:
         image = image.resize(IMG_SIZE)
         image = tf.keras.preprocessing.image.img_to_array(image)
         image = tf.keras.applications.mobilenet_v2.preprocess_input(image)
@@ -352,7 +352,7 @@ def preprocess_image(image):
     
 # Function to make predictions
 def predict(image):
-    if file is not None:
+    if image_file is not None:
         image = preprocess_image(image)
         predictions = model.predict(tf.expand_dims(image, axis=0))[0]
         predicted_class = CLASS_LABELS[predictions.argmax()]
