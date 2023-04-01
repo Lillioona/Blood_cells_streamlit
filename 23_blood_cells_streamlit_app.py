@@ -160,7 +160,7 @@ if selected == 'E.D.A.':
     st.dataframe(df)
     
     st.subheader('Distribution of the image sizes')
-    st.markdown('The Image size veried between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 to continue processing.')
+    st.markdown('The Image size veried between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 for the continuous process.')
     st.image(img_EDA_01, caption = 'img title')
     st.image(img_EDA_02, caption = 'img title')    
     st.image(img_EDA_03, caption = 'img title')
