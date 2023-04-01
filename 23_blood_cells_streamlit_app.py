@@ -134,7 +134,7 @@ if selected == 'Modelisation':
         
     result = st.button('First steps')
     
-    if resilt:
+    if result:
         st.subheader('First steps')
         st.markdown(
             """
