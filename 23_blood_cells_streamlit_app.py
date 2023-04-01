@@ -3,7 +3,6 @@ import streamlit as st
 import numpy as np
 import pickle
 import pandas as pd
-import git
 
 from streamlit_option_menu import option_menu
 from os import listdir     
@@ -209,15 +208,11 @@ CLASS_LABELS = ['basophil',
 repo = git.Repo.clone_from("https://github.com/Lillioona/Blood_cells_streamlit.git", "tmp")
 
 @st.cache(allow_output_mutation=True)
+
 def load_model():
-    # Load the model file
-    with open("tmp/Best_model_ft_5th_layer.h5", "rb") as f:
-        model = tf.keras.models.load_model(f)
+    model_file = BytesIO(requests.get(MODEL_URL).content)
+    model = tf.keras.models.load_model(model_file)
     return model
-#def load_model():
-#    model_file = BytesIO(requests.get(MODEL_URL).content)
-#    model = tf.keras.models.load_model(model_file)
-#    return model
 
 #load the model to use for predictions
 try:
@@ -286,7 +281,6 @@ if selected == 'Prediction':
         st.write(f"Predicted class: {predicted_class}")
         st.write(f"Confidence: {confidence:.2f}")
         
-    repo.git.execute(["rm", "-rf", "tmp"])
 #------------------------------------------------------------------------------------------------------------------------------------------
 #Section Perspectives    
 if selected == 'Perspectives':
