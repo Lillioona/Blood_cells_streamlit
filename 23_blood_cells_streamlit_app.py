@@ -95,8 +95,7 @@ if selected == 'Introduction':
       <a href="https://faspex.cancerimagingarchive.net/aspera/faspex/external_deliveries/77?passcode=a6be8bf0a97ddb34fc0913f37b8180d8f7d616a7">https://faspex.cancerimagingarchive.net/aspera/faspex/external_deliveries/77?passcode=a6be8bf0a97ddb34fc0913f37b8180d8f7d616a7</a>
     - **Rabbin:** A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm, 2022
       <a href="http://dl.raabindata.com/Leukemia_Data/ALL/L1/">http://dl.raabindata.com/Leukemia_Data/ALL/L1/</a>
-    </div>
-    """, unsafe_allow_html=True)
+    </div>""", unsafe_allow_html=True)
 
 
 #------------------------------------------------------------------------------------------------------------------------------------------
