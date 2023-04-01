@@ -213,7 +213,11 @@ def load_model():
     return model
 
 #load the model to use for predictions
-model = load_model()
+try:
+    model = load_model()
+
+except Exception as e:
+    st.write(e)
 
 # Preprocess image
 def preprocess_image(image):
