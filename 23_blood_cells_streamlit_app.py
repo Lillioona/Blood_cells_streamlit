@@ -3,8 +3,8 @@ import streamlit as st
 import numpy as np
 import pickle
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+#import matplotlib.pyplot as plt
+#import seaborn as sns
 
 from streamlit_option_menu import option_menu
 from os import listdir     
@@ -68,8 +68,8 @@ if selected == 'Introduction':
     unsafe_allow_html=True,
     )
     
-    st.write("")
-    st.write("")
+    st.write("\n\n")
+    
     
     st.markdown(''' 
     Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary 
@@ -116,17 +116,17 @@ if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
     st.markdown(
         """
-        Three open source datasets were used to achieve this project's objective. In total they contained 52,000 images of blood cells. The classification into one of 
+        Three open source datasets were used to achieve this project's objective. In total they contained ~52,000 images of blood cells. The classification into one of 
         eight blood cell types was the target of this project’s model.
         """
     )
-    with st.expander("Further informations on the datasets"): 
+    with st.expander("Further information on the datasets"): 
         st.subheader('Barcelona')
         st.markdown(
             """
             The first dataset was acquired using the analyzer CellaVision DM96 in the Core Laboratory at the Hospital Clinic of Barcelona. It is organized into eight 
-            different groups: neutrophils, eosinophils, basophils, lymphocytes, monocytes, immature granulocytes (promyelocytes, myelocytes, and metamyelocytes), 
-            erythroblasts and platelets or thrombocytes. The original image size was 360 × 363 pixels, in format jpg, and they were annotated by expert clinical pathologists. 
+            different groups: neutrophils, eosinophils, basophils, lymphocytes, monocytes, immature granulocytes (IG; includung promyelocytes, myelocytes, and metamyelocytes), 
+            erythroblasts and platelets or thrombocytes. The original image size was 360 × 363 pixels, in format .jpg, and they were annotated by expert clinical pathologists. 
             The images were captured from individuals without infection, hematologic or oncologic disease and free of any pharmacologic treatment at the time of blood collection.
             """
         )
@@ -140,7 +140,7 @@ if selected == 'E.D.A.':
         st.subheader('Munich')
         st.markdown(
             """
-            The third was the Munich AML Morphology Dataset which contained images taken from peripheral blood smears of 100 patients diagnosed with Acute Myeloid Leukemia 
+            The third was the Munich AML Morphology dataset which contained images taken from peripheral blood smears of 100 patients diagnosed with Acute Myeloid Leukemia 
             at Munich University Hospital between 2014 and 2017, as well as 100 patients without signs of hematological malignancy with an M8 digital microscope.
             """
         )
@@ -148,14 +148,14 @@ if selected == 'E.D.A.':
         st.markdown(
             """
             Depending on the source, the number of different blood cell classes varied between 8 to 13 classes. Based on the provided descriptions for each dataset and their 
-            classes, it was decided to merge them into a total of the 8 classes as described for the Barcelona dataset. neutrophils, eosinophils, basophils, lymphocytes, 
+            classes, it was decided to merge them into a total of the 8 classes as described for the Barcelona dataset: Neutrophils, eosinophils, basophils, lymphocytes, 
             monocytes, immature granulocytes (promyelocytes, myelocytes, and metamyelocytes), erythroblasts and platelets or thrombocytes.
             """
         )
         
     st.markdown(
     """
-    Extract of the combined dataset with additional features gatherd from the files:
+    An extract of the combined dataset with additional features gathered from the files:
     """
     )
     df = pd.read_csv("dataframe_eda.csv", index_col=0)
@@ -166,28 +166,28 @@ if selected == 'E.D.A.':
     The image size varied between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 for the 
                 continuous process.
                 """)
-    #st.image(img_EDA_01)
+    st.image(img_EDA_01)
     
     # set plot style
-    sns.set_style('darkgrid')
+    #sns.set_style('darkgrid')
 
     # create plot
-    figure, axis = plt.subplots(figsize=(8,8), facecolor="#0e1117")
-    axis.set_facecolor("#0e1117")
-    axis.set_xlim([351,599])
-    axis.set_ylim([351,599])
-    axis.set_xlabel('Width', color='white')
-    axis.set_ylabel('Height', color='white')
-    axis.spines['top'].set_visible(False)
-    axis.spines['right'].set_visible(False)
-    axis.set_title("Original image resolution", fontdict={'color': "white"}, size= 18, pad=25)
-    axis.tick_params(colors="white", bottom=True, left=True)
-    ax = sns.scatterplot(data=df, x='width', y='height',  hue='origin',
-                        palette='deep', size= 'origin', sizes=(100, 200))
-    axis.legend(loc=(0.125,.82), frameon=True, fontsize="large")
+    #figure, axis = plt.subplots(figsize=(8,8), facecolor="#0e1117")
+    #axis.set_facecolor("#0e1117")
+    #axis.set_xlim([351,599])
+    #axis.set_ylim([351,599])
+    #axis.set_xlabel('Width', color='white')
+    #axis.set_ylabel('Height', color='white')
+    #axis.spines['top'].set_visible(False)
+    #axis.spines['right'].set_visible(False)
+    #axis.set_title("Original image resolution", fontdict={'color': "white"}, size= 18, pad=25)
+    #axis.tick_params(colors="white", bottom=True, left=True)
+    #ax = sns.scatterplot(data=df, x='width', y='height',  hue='origin',
+    #                    palette='deep', size= 'origin', sizes=(100, 200))
+    #axis.legend(loc=(0.125,.82), frameon=True, fontsize="large")
 
     # display plot in Streamlit
-    st.pyplot(figure)
+    #st.pyplot(figure)
     
     
     st.subheader('Brightness')
@@ -199,41 +199,41 @@ if selected == 'E.D.A.':
     st.markdown("""
     The luminance is calculated by the greyscale pixel distribution.
                 """)
-    st.image(img_EDA_03, caption = 'greyscale pixel distribution of the images per class')
+    st.image(img_EDA_03, caption = 'Greyscale pixel distribution of the images per class')
     
 #------------------------------------------------------------------------------------------------------------------------------------------    
 #Section Models     
 if selected == 'Modelisation':
     st.header('Modelisation')
-    st.markdown('In the following we present the models obtaining the best prediction results:')         
+    st.markdown('In the following we present the models that achieved the best prediction results:')         
     
-    with st.expander("Further informations the modelisation process"): 
+    with st.expander("Further information about the modelisation process"): 
         st.subheader('First steps')
         st.markdown(
             """
-            We started with four pretrained models ResNet50V2, VGG16, MobileNetV2 and Xception. Without notable image preprocessing and modification 
-            of layers or hyper parameters and the imbalanced dataset the resulting accuracies remained close to random (~12,5% F1). Also we faced memory 
-            errors working with the whole dataset of 52 000 images. 
+            We started with four pre-trained models ResNet50V2, VGG16, MobileNetV2 and Xception. Without notable image preprocessing or modification 
+            of layers, hyper-parameters and an imbalanced dataset, the resulting accuracies remained close to random (~12,5% F1). We also faced memory 
+            issues while working with the entire dataset of ~52.000 images. 
             """
         )
         st.subheader('Subsample')
         st.markdown(
             """
-            To solve imbalance and memory issues a subsample was created. Regarding the class with the smallest occurrence (Basophil, n = 1598) a total 
-            number of 12784 images was extracted, where now every class was evenly represented. This was done using pandas methods groupby and sample. The 
-            subsample was given to every member of the group to stay comparable in modelisation.
+            A subsample was created to solve imbalance and memory issues. Based on the class with the smallest representation (Basophil, n=1598), a total 
+            number of 12784 images was extracted, with each class being evenly represented. This was done using pandas' groupby and sample method. The 
+            subsample was distributed to every member of the group to stay comparable during modelisation.
             """
         ) 
         st.subheader('Image Augmentation')
         st.markdown(
             """
             Image augmentation can be usefull to train classification models with small datasets and reduce overfitting. In this case it didn’t. The 
-            classical ImageDataGenerators droped the f1 score and resulted in continuously higher validation scores compared to training scores, as well as 
-            long runtimes. Considering that blood cell images tend to be recorded in standardized environments with similar methodologies, it was hypothesized 
-            that too much data augmentation was decreasing performance of the model. Reducing the image augmentation to horizontal & vertical flips, as well 
-            as random rotations in the form of an augmentation layer combined with rethinking the layer architecture resulted in the first model hitting above 
-            an 80% F1 score. Regarding that the most important information of the image (the white blood cell to classify) tended to be in the center of the 
-            image, surrounded by non-essential red blood cells, it was hypothesized that center crop augmentation would be beneficial. It increased the F1 score 
+            classical ImageDataGenerators resulted in continuously higher validation scores compared to training scores, as well as 
+            longer runtimes. Considering that blood cell images tend to be recorded in standardized environments with similar methodologies, it was hypothesized 
+            that too much data augmentation would actually decrease the model's performance. Reducing the image augmentation to horizontal & vertical flips, as well 
+            as adding random rotations thorugh an augmentation layer combined with re-thinking the layer architecture resulted in the first model hitting above 
+            an 80% F1-score. Regarding the fact, that the most important information of the image (the white blood cell to classify) tends to be in the center of the 
+            image, surrounded by non-essential red blood cells, it was hypothesized that center crop augmentation would be beneficial. It increased the initial F1 score 
             to ~88%.
             """
         )
