@@ -151,10 +151,10 @@ if selected == 'E.D.A.':
             """
         )
         
-     st.markdown(
-        """
-        An extract of the combined dataset is displayed below it further contains features gatherd from the files:
-        """
+    st.markdown(
+    """
+    An extract of the combined dataset is displayed below it further contains features gatherd from the files:
+    """
     )
     df = pd.read_csv("dataframe_eda.csv", index_col=0)
     st.dataframe(df)
