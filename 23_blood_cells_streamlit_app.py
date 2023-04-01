@@ -85,9 +85,10 @@ if selected == 'Introduction':
     st.image(img_home_01, caption = 'different types of blood cells')
     
     st.markdown("""
-        The data which is used is based on three different sources and is publicly available:
+        The data which enabled this project was derived from three different sources. The entire data is publicly available:
         - Barcelona -A dataset of microscopic peripheral blood cell images for development of automatic recognition systems, 2020
-        - Munich - A Single-cell Morphological Dataset of Leukocytes from AML Patients and Non-malignant Contols(AML-Cytomorhology LMU), 2022
+          
+        - Munich - A Single-cell Morphological Dataset of Leukocytes from AML Patients and Non-malignant Contols (AML-Cytomorhology LMU), 2022
         - Rabbin - A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm, 2022
         """)
 
