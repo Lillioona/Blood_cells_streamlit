@@ -66,6 +66,7 @@ if selected == 'Introduction':
     )
     
     st.write("")
+    st.write("")
     
     st.markdown(''' 
     Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary 
