@@ -166,7 +166,7 @@ if selected == 'E.D.A.':
                 """)
     st.image(img_EDA_01)
     
-     st.subheader('Brightness')
+    st.subheader('Brightness')
     st.markdown("""
     The image size varied between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 for the 
                 continuous process.
