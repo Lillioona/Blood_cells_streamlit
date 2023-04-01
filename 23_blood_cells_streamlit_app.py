@@ -114,9 +114,8 @@ if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
     st.markdown(
         """
-        Three different publicly available datasets were used to achieve this project's objective. The total accumulated volume of all three datasets was 52,000 images. 
-         The classification into one of these eight classes was 
-        the target of this project’s model.
+        Three different publicly available datasets were used to achieve this project's objective. The total volume of these datasets was 52,000 images. 
+         The classification into one of these eight classes was the target of this project’s model. An extract of the dataset is displayed below:
         """
     )
     with st.expander("Further informations to the Datasets"): 
