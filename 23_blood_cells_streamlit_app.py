@@ -83,8 +83,8 @@ if selected == 'Introduction':
     basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as mentioned above, platelets.''')
     
     #st.image(img_home_01, caption = 'different types of blood cells')
-    left_co, cent_co,last_co = st.columns(3)
-    with cent_co:
+    left_co, right_co = st.columns(3)
+    with left_co:
         st.image(img_home_01, caption= "The different types of blood cells to classify", width=500)
         
     st.markdown("<hr>", unsafe_allow_html=True)
