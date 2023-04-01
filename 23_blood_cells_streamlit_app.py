@@ -119,6 +119,7 @@ if selected == 'E.D.A.':
          The classification into one of these eight classes was 
         the target of this project’s model.
         """
+    )
     with st.expander("Further informations to the Datasets"): 
         st.subheader('Barcelona')
         st.markdown(
