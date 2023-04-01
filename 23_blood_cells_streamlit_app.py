@@ -102,7 +102,7 @@ if selected == 'Introduction':
         <li><b>Munich:</b> A Single-cell Morphological Dataset of Leukocytes from AML Patients and Non-malignant Contols (AML-Cytomorhology LMU), 2022 - 
             <a href="https://faspex.cancerimagingarchive.net/aspera/faspex/external_deliveries/77?passcode=a6be8bf0a97ddb34fc0913f37b8180d8f7d616a7">
             https://faspex.cancerimagingarchive.net/aspera/faspex/external_deliveries/77?passcode=a6be8bf0a97ddb34fc0913f37b8180d8f7d616a7</a></li>
-        <li><b>Rabbin:</b> A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm, 2022 - 
+        <li><b>Raabin:</b> A large dataset of white blood cells containing cell locations and types, along with segmented nuclei and cytoplasm, 2022 - 
             <a href="http://dl.raabindata.com/Leukemia_Data/ALL/L1/">http://dl.raabindata.com/Leukemia_Data/ALL/L1/</a></li>
     </ul>
     </div>""", unsafe_allow_html=True)
@@ -112,7 +112,46 @@ if selected == 'Introduction':
 #Section EDA    
 if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
-    
+    st.subheader
+    s.markdown(
+        """
+        Three different publicly available datasets were used to achieve this project's objective. The total accumulated volume of all three datasets was 52,000 images. 
+         The classification into one of these eight classes was 
+        the target of this project’s model.
+        """
+    with st.expander("Further informations to the Datasets"): 
+        st.subheader('Barcelona')
+        st.markdown(
+            """
+            The first dataset was acquired using the analyzer CellaVision DM96 in the Core Laboratory at the Hospital Clinic of Barcelona. It is organized into eight 
+            different groups: neutrophils, eosinophils, basophils, lymphocytes, monocytes, immature granulocytes (promyelocytes, myelocytes, and metamyelocytes), 
+            erythroblasts and platelets or thrombocytes. The original image size was 360 × 363 pixels, in format jpg, and they were annotated by expert clinical pathologists. 
+            The images were captured from individuals without infection, hematologic or oncologic disease and free of any pharmacologic treatment at the time of blood collection.
+            """
+        )
+        st.subheader('Raabin')
+        st.markdown(
+            """
+            The second dataset is called Raabin-WBC. It is a collection of images from the Razi Hospital in Rasht, Gholhak Laboratory, Shahr-e-Qods Laboratory, and 
+            Takht-e Tavous Laboratory in Tehran.
+            """
+        )
+        st.subheader('Munich')
+        st.markdown(
+            """
+            The third was the Munich AML Morphology Dataset which contained images taken from peripheral blood smears of 100 patients diagnosed with Acute Myeloid Leukemia 
+            at Munich University Hospital between 2014 and 2017, as well as 100 patients without signs of hematological malignancy with an M8 digital microscope.
+            """
+        )
+        
+            st.subheader('Munich')
+            st.markdown(
+                """
+                Depending on the source, the number of different blood cell classes varied between 8 to 13 classes. Based on the provided descriptions for each dataset and their 
+                classes, it was decided to merge them into a total of the 8 classes as described for the Barcelona dataset. neutrophils, eosinophils, basophils, lymphocytes, 
+                monocytes, immature granulocytes (promyelocytes, myelocytes, and metamyelocytes), erythroblasts and platelets or thrombocytes.
+                """
+            )
     df = pd.read_csv("dataframe_eda.csv", index_col=0)
     st.dataframe(df)
     
