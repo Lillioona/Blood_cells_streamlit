@@ -176,14 +176,14 @@ if selected == 'E.D.A.':
     axis.set_facecolor("#0e1117")
     axis.set_xlim([351,599])
     axis.set_ylim([351,599])
-    axis.set_xlabel('Width', color='white')
-    axis.set_ylabel('Height', color='white')
+    #axis.set_xlabel('Width', color='white')
+    #axis.set_ylabel('Height', color='white')
     axis.spines['top'].set_visible(False)
     axis.spines['right'].set_visible(False)
     axis.set_title("Original image resolution", fontdict={'color': "white"}, size= 18, pad=25)
     axis.tick_params(colors="white", bottom=True, left=True)
-    ax = sns.scatterplot(data=df, x='width', y='height',  hue='origin',
-                        palette='deep', size= 'origin', sizes=(100, 200))
+    ax = sns.scatterplot(data=df, x='Width', y='Height',  hue='Origin',
+                        palette='deep', size= 'Origin', sizes=(100, 200))
     axis.legend(loc=(0.125,.82), frameon=True, fontsize="large")
 
     # display plot in Streamlit
@@ -374,41 +374,49 @@ if selected == 'Prediction':
     st.header('Prediction')
     st.subheader("Choose a model to classify a blood cell image")
     
-    image_file = st.file_uploader("Upload an image to classify:", type=["jpg", "jpeg", "png", "tiff"])
+    l_col, r_col = st.columns(2)
+    with l_col:
+        image_file = st.file_uploader("Upload an image to classify:", type=["jpg", "jpeg", "png", "tiff"])
     
-    selected_class = st.selectbox("Select a class:", CLASS_LABELS)
-    
-    if st.button("Predict"):
+    with r_col:
+        selected_class = st.selectbox("Select a class:", CLASS_LABELS)
+        
+    if st.button("Predict")    
         if image_file is not None:
             image = Image.open(image_file)
-            st.image(image, caption="Uploaded Image", use_column_width=True)
-            predicted_class, confidence = predict(image)
+        if image_file is None:
+            pass
+            #something with selected classes
+            #image = ...
+            
+        st.image(image, caption="Uploaded Image", use_column_width=True)
+        predicted_class, confidence = predict(image)
 
-            col1, col2 = st.columns(2)
-            with col1:
-                st.markdown("##Predicted class:")
-                st.write(f"{predicted_class}")
-            with col2:
-                st.markdown("##Confidence score:")
-                st.write(f"{confidence:.2f}")
-                                                                        
-            # Display additional information about the predicted class
-            if predicted_class == "Eosinophil":
-                st.info("Eosinophils are a type of white blood cell involved in the immune response to parasites and allergies.")
-            elif predicted_class == "Lymphocyte":
-                st.info("Lymphocytes are a type of white blood cell involved in the immune response to infections and cancer.")
-            elif predicted_class == "Monocyte":
-                st.info("Monocytes are a type of white blood cell involved in the immune response to infections and inflammation.")
-            elif predicted_class == "Neutrophil":
-                st.info("Neutrophils are a type of white blood cell involved in the immune response to bacterial and fungal infections.")
-            elif predicted_class == "Immature granulocytes":
-                st.info("Immature granulocytes, including promyelocytes, myelocytes, and metamyelocytes, are early-stage white blood cells that are typically elevated in response to acute bacterial infections and inflammatory disorders.")
-            elif predicted_class == "Basophils":
-                st.info("Basophils are a type of white blood cell involved in the immune response against parasites and are also involved in the inflammatory response.")
-            elif predicted_class == "Platelet":
-                st.info("Platelets are small, colorless cell fragments in the blood that play a crucial role in blood clotting and the prevention of excessive bleeding.")
-            elif predicted_class == "Erythroblast":
-                st.info("Erythroblasts are immature red blood cells that are involved in the production of hemoglobin and the transportation of oxygen throughout the body.")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("##Predicted class:")
+            st.write(f"{predicted_class}")
+        with col2:
+            st.markdown("##Confidence score:")
+            st.write(f"{confidence:.2f}")
+
+        # Display additional information about the predicted class
+        if predicted_class == "Eosinophil":
+            st.info("Eosinophils are a type of white blood cell involved in the immune response to parasites and allergies.")
+        elif predicted_class == "Lymphocyte":
+            st.info("Lymphocytes are a type of white blood cell involved in the immune response to infections and cancer.")
+        elif predicted_class == "Monocyte":
+            st.info("Monocytes are a type of white blood cell involved in the immune response to infections and inflammation.")
+        elif predicted_class == "Neutrophil":
+            st.info("Neutrophils are a type of white blood cell involved in the immune response to bacterial and fungal infections.")
+        elif predicted_class == "Immature granulocytes":
+            st.info("Immature granulocytes, including promyelocytes, myelocytes, and metamyelocytes, are early-stage white blood cells that are typically elevated in response to acute bacterial infections and inflammatory disorders.")
+        elif predicted_class == "Basophils":
+            st.info("Basophils are a type of white blood cell involved in the immune response against parasites and are also involved in the inflammatory response.")
+        elif predicted_class == "Platelet":
+            st.info("Platelets are small, colorless cell fragments in the blood that play a crucial role in blood clotting and the prevention of excessive bleeding.")
+        elif predicted_class == "Erythroblast":
+            st.info("Erythroblasts are immature red blood cells that are involved in the production of hemoglobin and the transportation of oxygen throughout the body.")
     
     # Add some padding and styling elements to the selectbox and file uploader
     st.markdown('<style>div[role="listbox"] > div:nth-child(1) {padding: 10px; font-family: Arial, sans-serif;}</style>', unsafe_allow_html=True)
