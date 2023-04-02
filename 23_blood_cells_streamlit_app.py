@@ -5,7 +5,9 @@ import pickle
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import mpld3
 
+import streamlit.components.v1 as components
 from streamlit_option_menu import option_menu
 from os import listdir     
 from PIL import Image, ImageOps
@@ -187,7 +189,8 @@ if selected == 'E.D.A.':
     axis.legend(loc=(0.125,.82), frameon=True, fontsize="large")
 
     # display plot in Streamlit
-    st.pyplot(figure)
+    fig_html = mpld3.fig_to_html(figure)
+    components.html(fig_html, height=600)
     
     
     st.subheader('Brightness')
@@ -379,13 +382,13 @@ if selected == 'Prediction':
         image_file = st.file_uploader("Upload an image to classify:", type=["jpg", "jpeg", "png", "tiff"])
     
     with r_col:
-        selected_class = st.selectbox("Select a class:", CLASS_LABELS)
+        selected_class = st.selectbox("Select a class:", ["Please make selection",CLASS_LABELS])
         
     if st.button("Predict"):    
         if image_file is not None:
             image = Image.open(image_file)
         if image_file is None:
-            pass
+            st.info("Please upload an image to classify or choose one from the dropdown manu on the right") 
             #something with selected classes
             #image = ...
             
