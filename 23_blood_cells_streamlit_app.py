@@ -387,7 +387,7 @@ if selected == 'Prediction':
     st.header('Prediction')
     st.subheader("Choose a model to classify a blood cell image")
     
-    image_file = st.file_uploader("Upload an image to classify:", type=["jpg", "jpeg", "png", "tiff])
+    image_file = st.file_uploader("Upload an image to classify:", type=["jpg", "jpeg", "png", "tiff"])
     if st.button("Predict"):
         if image_file is not None:
             image = Image.open(image_file)
