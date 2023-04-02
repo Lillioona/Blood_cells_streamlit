@@ -13,6 +13,7 @@ from os import listdir
 from PIL import Image, ImageOps
 from io import BytesIO
 import plotly.express as px
+import plotly.graph_objs as go
 
 import tensorflow as tf
 from tensorflow.keras.models import load_model
@@ -164,7 +165,9 @@ if selected == 'E.D.A.':
     )
     
     df = pd.read_csv("dataframe_eda.csv", index_col=0)
-    st.dataframe(df)
+    
+    with st.expander("Show dataset:")
+        st.dataframe(df)
     
     st.subheader('Distribution of the image sizes')
     st.markdown("""
@@ -200,6 +203,13 @@ if selected == 'E.D.A.':
                 """)
     st.image(img_EDA_03, caption = 'Greyscale pixel distribution of the images per class')
     
+    # Load the HTML file
+    html_file = open('UMAP_3D_scatter.html', 'r', encoding='utf-8')
+    source_code = html_file.read()
+
+    # Display the HTML file
+    components.html(source_code, height=1000, width=1000, scrolling=True)
+
 #------------------------------------------------------------------------------------------------------------------------------------------    
 #Section Models     
 if selected == 'Modelisation':
