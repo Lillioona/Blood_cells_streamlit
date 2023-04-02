@@ -168,13 +168,35 @@ if selected == 'E.D.A.':
     The image size varied between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 for the 
                 continuous process.
                 """)
+    # create plot
+    fig, axis = plt.subplots(facecolor="#0e1117")
+    axis.set_facecolor("#0e1117")
+    axis.set_xlim([351,599])
+    axis.set_ylim([351,599])
+    axis.set_xlabel('Width', color='white')
+    axis.set_ylabel('Height', color='white')
+    axis.spines['top'].set_visible(False)
+    axis.spines['right'].set_visible(False)
+    axis.set_title("Original image resolution", fontdict={'color': "white"}, size= 18, pad=25)
+    axis.tick_params(colors="white", bottom=True, left=True)
+
+    # create scatterplot
+    sns.scatterplot(data=df, x='Width', y='Height',  hue='Origin',
+                    palette='deep', size= 'Origin', sizes=(100, 200))
+    axis.legend(loc=(0.125,.82), frameon=True, fontsize="large")
+
+    # convert plot to interactive format
+    fig_html = mpld3.fig_to_html(fig)
+
+    # display interactive plot in Streamlit
+    st.markdown(fig_html, unsafe_allow_html=True)
     #st.image(img_EDA_01)
     
     # set plot style
     #sns.set_style('darkgrid')
 
     # create plot
-    fig, ax = plt.subplots()
+    #fig, ax = plt.subplots()
     #axis.set_facecolor("#0e1117")
     #axis.set_xlim([351,599])
     #axis.set_ylim([351,599])
@@ -184,15 +206,15 @@ if selected == 'E.D.A.':
     #axis.spines['right'].set_visible(False)
     #axis.set_title("Original image resolution", fontdict={'color': "white"}, size= 18, pad=25)
     #axis.tick_params(colors="white", bottom=True, left=True)
-    sns.scatterplot(data=df, x='Width', y='Height',  hue='Origin',
-                        palette='deep', size= 'Origin', sizes=(100, 200))
+    #sns.scatterplot(data=df, x='Width', y='Height',  hue='Origin',
+    #                    palette='deep', size= 'Origin', sizes=(100, 200))
     #axis.legend(loc=(0.125,.82), frameon=True, fontsize="large")
 
     # display plot in Streamlit
-    fig_html = mpld3.fig_to_html(fig)
+    #fig_html = mpld3.fig_to_html(fig)
     #components.html(fig_html, height=600)
     
-    st.pyplot(fig_html, unsafe_allow_html=True)
+    #st.pyplot(fig_html, unsafe_allow_html=True)
     
     st.subheader('Brightness')
     st.markdown("""
