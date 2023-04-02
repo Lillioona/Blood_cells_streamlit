@@ -3,11 +3,17 @@ import streamlit as st
 import numpy as np
 import pickle
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import mpld3
 
+import streamlit.components.v1 as components
 from streamlit_option_menu import option_menu
 from os import listdir     
 from PIL import Image, ImageOps
 from io import BytesIO
+import plotly.express as px
+import plotly.graph_objs as go
 
 import tensorflow as tf
 from tensorflow.keras.models import load_model
@@ -26,8 +32,8 @@ st.set_page_config(page_title="BCC", page_icon=":drop_of_blood:", layout="center
 # open images to display (maybe add them to corresponding section for clarity/structure
 img_home_01 = Image.open('images/Blood_cell_examples.png')
 img_EDA_01 = Image.open('images/Image_size.png')
-img_EDA_02 = Image.open('images/EDA_02.png')
-img_EDA_03 = Image.open('images/EDA_03.png')
+img_EDA_02 = Image.open('images/RGB_dist.png')
+img_EDA_03 = Image.open('images/Grey_dist.png')
 Analysis_01 = Image.open('images/Analysis_01.png')
 Analysis_02 = Image.open('images/Analysis_02.png')
 Analysis_04_mix = Image.open('images/Analysis_04_mix.png')
@@ -42,7 +48,7 @@ Analysis_09_Amri = Image.open('images/analysis_09_Amri.png')
 Header = st.container()
 with Header:
     st.title('Automatic Blood Cell Recognition')
-
+ 
 # Horizontal menu
 selected = option_menu(None, ["Introduction", "E.D.A.", "Modelisation", 'Prediction', 'Perspectives', 'About'], 
     icons=["house-door", "bar-chart", "wrench", 'upload', 'search', 'info-circle'], 
@@ -66,8 +72,8 @@ if selected == 'Introduction':
     unsafe_allow_html=True,
     )
     
-    st.write("")
-    st.write("")
+    st.write("\n\n")
+    
     
     st.markdown(''' 
     Blood is a body fluid which flows in the human circulation system and has important functions, such as the supplement of necessary 
@@ -85,7 +91,7 @@ if selected == 'Introduction':
     In general blood cells can be divided into erythrocytes known as red blood cells , leukocytes known as white blood cells and the cell fragments 
     called platelets or thrombocytes.
     In this study the focus lies on erythroblasts which are an early stage of erythrocytes and the subdivision of leukocytes such as neutrophils,
-    basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as mentioned above, platelets.\n''')
+    basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes (IG) and the as mentioned above, platelets.\n''')
     
     # image blood cells
     st.image(img_home_01, caption = 'The different types of blood cells to classify')
@@ -114,17 +120,17 @@ if selected == 'E.D.A.':
     st.header('Exploratory Data Analysis')
     st.markdown(
         """
-        Three open source datasets were used to achieve this project's objective. In total they contained 52,000 images of blood cells. The classification into one of 
+        Three open source datasets were used to achieve this project's objective. In total they contained ~52,000 images of blood cells. The classification into one of 
         eight blood cell types was the target of this project’s model.
         """
     )
-    with st.expander("Further informations on the datasets"): 
+    with st.expander("Further information on the datasets"): 
         st.subheader('Barcelona')
         st.markdown(
             """
             The first dataset was acquired using the analyzer CellaVision DM96 in the Core Laboratory at the Hospital Clinic of Barcelona. It is organized into eight 
-            different groups: neutrophils, eosinophils, basophils, lymphocytes, monocytes, immature granulocytes (promyelocytes, myelocytes, and metamyelocytes), 
-            erythroblasts and platelets or thrombocytes. The original image size was 360 × 363 pixels, in format jpg, and they were annotated by expert clinical pathologists. 
+            different groups: neutrophils, eosinophils, basophils, lymphocytes, monocytes, immature granulocytes (IG; includung promyelocytes, myelocytes, and metamyelocytes), 
+            erythroblasts and platelets or thrombocytes. The original image size was 360 × 363 pixels, in format .jpg, and they were annotated by expert clinical pathologists. 
             The images were captured from individuals without infection, hematologic or oncologic disease and free of any pharmacologic treatment at the time of blood collection.
             """
         )
@@ -138,7 +144,7 @@ if selected == 'E.D.A.':
         st.subheader('Munich')
         st.markdown(
             """
-            The third was the Munich AML Morphology Dataset which contained images taken from peripheral blood smears of 100 patients diagnosed with Acute Myeloid Leukemia 
+            The third was the Munich AML Morphology dataset which contained images taken from peripheral blood smears of 100 patients diagnosed with Acute Myeloid Leukemia 
             at Munich University Hospital between 2014 and 2017, as well as 100 patients without signs of hematological malignancy with an M8 digital microscope.
             """
         )
@@ -146,72 +152,97 @@ if selected == 'E.D.A.':
         st.markdown(
             """
             Depending on the source, the number of different blood cell classes varied between 8 to 13 classes. Based on the provided descriptions for each dataset and their 
-            classes, it was decided to merge them into a total of the 8 classes as described for the Barcelona dataset. neutrophils, eosinophils, basophils, lymphocytes, 
+            classes, it was decided to merge them into a total of the 8 classes as described for the Barcelona dataset: Neutrophils, eosinophils, basophils, lymphocytes, 
             monocytes, immature granulocytes (promyelocytes, myelocytes, and metamyelocytes), erythroblasts and platelets or thrombocytes.
             """
         )
         
+    # Display the dataframe   
     st.markdown(
     """
-    Extract of the combined dataset with additional features gatherd from the files:
+    An extract of the combined dataset with additional features gathered from the files:
     """
     )
+    
     df = pd.read_csv("dataframe_eda.csv", index_col=0)
-    st.dataframe(df)
+    
+    with st.expander("Show dataset:"):
+        st.dataframe(df)
     
     st.subheader('Distribution of the image sizes')
     st.markdown("""
     The image size varied between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 for the 
                 continuous process.
                 """)
-    st.image(img_EDA_01)
+    
+   # Create scatterplot with Plotly
+    fig = px.scatter(df, x='Width', y='Height', color='Origin', size='Height', symbol='Origin',
+                     hover_data={'Shape': True, 'Luminosity' : True, 'Brightness' : True},
+                     hover_name="Origin")
+
+    # Set axis labels and title
+    fig.update_xaxes(title='Width', showgrid=True)
+    fig.update_yaxes(title='Height')
+    fig.update_layout(title='Original image resolution', title_font_size=18,
+                      plot_bgcolor="#0e1117", paper_bgcolor="#0e1117", font_color="white")
+
+    # Display plot in Streamlit
+    st.plotly_chart(fig)
     
     st.subheader('Brightness')
     st.markdown("""
-    The image size varied between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 for the 
-                continuous process.
-                """)
+    The brightness is calculated by the RGB pixel distribution, which show different characteristics according to the classes. 
+    """)
     st.image(img_EDA_02, caption = 'RGB pixel distribution of the images per class') 
+    
+    st.write('\n')
+    
     st.subheader('Luminance')
     st.markdown("""
-    The image size varied between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 for the 
-                continuous process.
+    The luminance is calculated by the greyscale pixel distribution.
                 """)
-    st.image(img_EDA_03, caption = 'greyscale pixel distribution of the images per class')
+    st.image(img_EDA_03, caption = 'Greyscale pixel distribution of the images per class')
     
+    # Load the HTML file
+    html_file = open('UMAP_3D_scatter.html', 'r', encoding='utf-8')
+    source_code = html_file.read()
+
+    # Display the HTML file
+    components.html(source_code, height=1000, width=1000, scrolling=True)
+
 #------------------------------------------------------------------------------------------------------------------------------------------    
 #Section Models     
 if selected == 'Modelisation':
     st.header('Modelisation')
-    st.markdown('In the following we present the models obtaining the best prediction results:')         
+    st.markdown('In the following we present the models that achieved the best prediction results:')         
     
-    with st.expander("Further informations the modelisation process"): 
+    with st.expander("Further information about the modelisation process"): 
         st.subheader('First steps')
         st.markdown(
             """
-            We started with four pretrained models ResNet50V2, VGG16, MobileNetV2 and Xception. Without notable image preprocessing and modification 
-            of layers or hyper parameters and the imbalanced dataset the resulting accuracies remained close to random (~12,5% F1). Also we faced memory 
-            errors working with the whole dataset of 52 000 images. 
+            We started with four pre-trained models ResNet50V2, VGG16, MobileNetV2 and Xception. Without notable image preprocessing or modification 
+            of layers, hyper-parameters and an imbalanced dataset, the resulting accuracies remained close to random (~12,5% F1). We also faced memory 
+            issues while working with the entire dataset of ~52.000 images. 
             """
         )
         st.subheader('Subsample')
         st.markdown(
             """
-            To solve imbalance and memory issues a subsample was created. Regarding the class with the smallest occurrence (Basophil, n = 1598) a total 
-            number of 12784 images was extracted, where now every class was evenly represented. This was done using pandas methods groupby and sample. The 
-            subsample was given to every member of the group to stay comparable in modelisation.
+            A subsample was created to solve imbalance and memory issues. Based on the class with the smallest representation (Basophil, n=1598), a total 
+            number of 12784 images was extracted, with each class being evenly represented. This was done using pandas' groupby and sample method. The 
+            subsample was distributed to every member of the group to stay comparable during modelisation.
             """
         ) 
         st.subheader('Image Augmentation')
         st.markdown(
             """
             Image augmentation can be usefull to train classification models with small datasets and reduce overfitting. In this case it didn’t. The 
-            classical ImageDataGenerators droped the f1 score and resulted in continuously higher validation scores compared to training scores, as well as 
-            long runtimes. Considering that blood cell images tend to be recorded in standardized environments with similar methodologies, it was hypothesized 
-            that too much data augmentation was decreasing performance of the model. Reducing the image augmentation to horizontal & vertical flips, as well 
-            as random rotations in the form of an augmentation layer combined with rethinking the layer architecture resulted in the first model hitting above 
-            an 80% F1 score. Regarding that the most important information of the image (the white blood cell to classify) tended to be in the center of the 
-            image, surrounded by non-essential red blood cells, it was hypothesized that center crop augmentation would be beneficial. It increased the F1 score 
+            classical ImageDataGenerators resulted in continuously higher validation scores compared to training scores, as well as 
+            longer runtimes. Considering that blood cell images tend to be recorded in standardized environments with similar methodologies, it was hypothesized 
+            that too much data augmentation would actually decrease the model's performance. Reducing the image augmentation to horizontal & vertical flips, as well 
+            as adding random rotations thorugh an augmentation layer combined with re-thinking the layer architecture resulted in the first model hitting above 
+            an 80% F1-score. Regarding the fact, that the most important information of the image (the blood cell to classify) tends to be in the center of the 
+            image, surrounded by non-essential red blood cells, it was hypothesized that center crop augmentation would be beneficial. It increased the initial F1 score 
             to ~88%.
             """
         )
@@ -279,50 +310,27 @@ if selected == 'Modelisation':
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 # Necessary function and variables
-#MODEL_URL = "https://github.com/Lillioona/Blood_cells_streamlit/blob/main/Best_model_ft_5th_layer.h5"
 MODEL = "Best_model_ft_5th_layer.h5"
 
 IMG_SIZE = (360,360) 
 
-CLASS_LABELS = ['basophil',
-                'eosinophil',
-                'erythroblast',
-                'ig',
-                'lymphocyte',
-                'monocyte',
-                'neutrophil',
-                'platelet']
 
+
+CLASS_LABELS = ['Basophil',
+                'Eosinophil',
+                'Erythroblast',
+                'Immature granulocytes',
+                'Lymphocyte',
+                'Monocyte',
+                'Neutrophil',
+                'Platelet']
+
+#function to load model
 @st.cache(allow_output_mutation=True)
 def load_model():
-    model_file = BytesIO(requests.get(MODEL_URL).content)
     model = tf.keras.models.load_model(MODEL)
     return model
 
-#load the model to use for predictions
-try:
-    model = load_model()
-
-except Exception as e:
-    st.write(e)
-
-# Preprocess image
-def preprocess_image(image):
-    if file is not None:
-        image = image.resize(IMG_SIZE)
-        image = tf.keras.preprocessing.image.img_to_array(image)
-        image = tf.keras.applications.mobilenet_v2.preprocess_input(image)
-        return image
-    
-# Function to make predictions
-def predict(image):
-    if file is not None:
-        image = preprocess_image(image)
-        predictions = model.predict(tf.expand_dims(image, axis=0))[0]
-        predicted_class = CLASS_LABELS[predictions.argmax()]
-        confidence = predictions.max()
-        return predicted_class, confidence
-    
 # Calculate f1 score
 def f1(y_true, y_pred):    
     def recall_m(y_true, y_pred):
@@ -331,18 +339,35 @@ def f1(y_true, y_pred):
         
         recall = TP / (Positives+K.epsilon())    
         return recall
-  
-          #  col1, col2 = st.columns(2)
-            # load dataset 1
-       #     with col1:
-       #         file = st.file_uploader(label='Pick an image to test',accept_multiple_files=False)
-        #        prediction(file)
-            # load dataset 2
-        #    with col2:
-        #        st.write("Select images")
 
-        
-          
+#load the model to use for predictions
+try:
+    #Create a dictionary mapping the function name to the function object
+    custom_objects = {'f1': f1}
+
+    # Load the Keras model using custom_object_scope
+    with tf.keras.utils.custom_object_scope(custom_objects):
+        model = load_model()
+
+except Exception as e:
+    st.write(e)
+
+# Preprocess image
+def preprocess_image(image):
+    if image_file is not None:
+        image = image.resize(IMG_SIZE)
+        image = tf.keras.preprocessing.image.img_to_array(image)
+        image = tf.keras.applications.resnet_v2.preprocess_input(image)
+        return image
+    
+# Function to make predictions
+def predict(image):
+    if image_file is not None:
+        image = preprocess_image(image)
+        predictions = model.predict(tf.expand_dims(image, axis=0))[0]
+        predicted_class = CLASS_LABELS[predictions.argmax()]
+        confidence = predictions.max()
+        return predicted_class, confidence    
 
 # list all available images to make predicitions on (no images uploaded so far right?)   
 def list_images(directory, file_type):
@@ -354,18 +379,58 @@ def list_images(directory, file_type):
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 if selected == 'Prediction':
+
     st.header('Prediction')
     st.subheader("Choose a model to classify a blood cell image")
     
-    image_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
+    l_col, r_col = st.columns(2)
+    with l_col:
+        image_file = st.file_uploader("Upload an image to classify:", type=["jpg", "jpeg", "png", "tiff"])
     
-    if image_file is not None:
-        image = Image.open(image_file)
+    with r_col:
+        selected_class = st.selectbox("Select a class:", ["Please make selection",CLASS_LABELS])
+        
+    if st.button("Predict"):    
+        if image_file is not None:
+            image = Image.open(image_file)
+        if image_file is None:
+            st.info("Please upload an image to classify or choose one from the dropdown manu on the right") 
+            #something with selected classes
+            #image = ...
+            
         st.image(image, caption="Uploaded Image", use_column_width=True)
         predicted_class, confidence = predict(image)
-        st.write(f"Predicted class: {predicted_class}")
-        st.write(f"Confidence: {confidence:.2f}")
-        
+
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("##Predicted class:")
+            st.write(f"{predicted_class}")
+        with col2:
+            st.markdown("##Confidence score:")
+            st.write(f"{confidence:.2f}")
+
+        # Display additional information about the predicted class
+        if predicted_class == "Eosinophil":
+            st.info("Eosinophils are a type of white blood cell involved in the immune response to parasites and allergies.")
+        elif predicted_class == "Lymphocyte":
+            st.info("Lymphocytes are a type of white blood cell involved in the immune response to infections and cancer.")
+        elif predicted_class == "Monocyte":
+            st.info("Monocytes are a type of white blood cell involved in the immune response to infections and inflammation.")
+        elif predicted_class == "Neutrophil":
+            st.info("Neutrophils are a type of white blood cell involved in the immune response to bacterial and fungal infections.")
+        elif predicted_class == "Immature granulocytes":
+            st.info("Immature granulocytes, including promyelocytes, myelocytes, and metamyelocytes, are early-stage white blood cells that are typically elevated in response to acute bacterial infections and inflammatory disorders.")
+        elif predicted_class == "Basophils":
+            st.info("Basophils are a type of white blood cell involved in the immune response against parasites and are also involved in the inflammatory response.")
+        elif predicted_class == "Platelet":
+            st.info("Platelets are small, colorless cell fragments in the blood that play a crucial role in blood clotting and the prevention of excessive bleeding.")
+        elif predicted_class == "Erythroblast":
+            st.info("Erythroblasts are immature red blood cells that are involved in the production of hemoglobin and the transportation of oxygen throughout the body.")
+    
+    # Add some padding and styling elements to the selectbox and file uploader
+    st.markdown('<style>div[role="listbox"] > div:nth-child(1) {padding: 10px; font-family: Arial, sans-serif;}</style>', unsafe_allow_html=True)
+    st.markdown('<style>.css-1aya9p5 {font-family: Arial, sans-serif;}</style>', unsafe_allow_html=True)
+                                                                        
 #------------------------------------------------------------------------------------------------------------------------------------------
 #Section Perspectives    
 if selected == 'Perspectives':

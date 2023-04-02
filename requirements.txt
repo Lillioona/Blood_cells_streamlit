@@ -5,3 +5,7 @@ tensorflow
 tensorflow_intel
 tensorboard
 pandas==1.5.3
+matplotlib
+seaborn
+plotly
+mpld3
