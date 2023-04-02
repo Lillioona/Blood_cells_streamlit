@@ -87,7 +87,7 @@ if selected == 'Introduction':
     In general blood cells can be divided into erythrocytes known as red blood cells , leukocytes known as white blood cells and the cell fragments 
     called platelets or thrombocytes.
     In this study the focus lies on erythroblasts which are an early stage of erythrocytes and the subdivision of leukocytes such as neutrophils,
-    basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes(IG) and the as mentioned above, platelets.\n''')
+    basophils, eosinophils, monocytes ,lymphocytes and immature granulocytes (IG) and the as mentioned above, platelets.\n''')
     
     # image blood cells
     st.image(img_home_01, caption = 'The different types of blood cells to classify')
@@ -232,7 +232,7 @@ if selected == 'Modelisation':
             longer runtimes. Considering that blood cell images tend to be recorded in standardized environments with similar methodologies, it was hypothesized 
             that too much data augmentation would actually decrease the model's performance. Reducing the image augmentation to horizontal & vertical flips, as well 
             as adding random rotations thorugh an augmentation layer combined with re-thinking the layer architecture resulted in the first model hitting above 
-            an 80% F1-score. Regarding the fact, that the most important information of the image (the white blood cell to classify) tends to be in the center of the 
+            an 80% F1-score. Regarding the fact, that the most important information of the image (the blood cell to classify) tends to be in the center of the 
             image, surrounded by non-essential red blood cells, it was hypothesized that center crop augmentation would be beneficial. It increased the initial F1 score 
             to ~88%.
             """
@@ -305,14 +305,16 @@ MODEL = "Best_model_ft_5th_layer.h5"
 
 IMG_SIZE = (360,360) 
 
-CLASS_LABELS = ['basophil',
-                'eosinophil',
-                'erythroblast',
-                'ig',
-                'lymphocyte',
-                'monocyte',
-                'neutrophil',
-                'platelet']
+
+
+CLASS_LABELS = ['Basophil',
+                'Eosinophil',
+                'Erythroblast',
+                'Immature granulocytes',
+                'Lymphocyte',
+                'Monocyte',
+                'Neutrophil',
+                'Platelet']
 
 #function to load model
 @st.cache(allow_output_mutation=True)
@@ -346,7 +348,7 @@ def preprocess_image(image):
     if image_file is not None:
         image = image.resize(IMG_SIZE)
         image = tf.keras.preprocessing.image.img_to_array(image)
-        image = tf.keras.applications.mobilenet_v2.preprocess_input(image)
+        image = tf.keras.applications.resnet_v2.preprocess_input(image)
         return image
     
 # Function to make predictions
@@ -368,26 +370,14 @@ def list_images(directory, file_type):
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 if selected == 'Prediction':
-    # Apply styling elements to the section
-    st.markdown("""
-    <style>
-        .main {
-            background-color: #f5f5f5;
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-    </style>
-    """, unsafe_allow_html=True)
 
-    # Apply the CSS class to the section
-    st.markdown('<div class="main">', unsafe_allow_html=True)
     st.header('Prediction')
     st.subheader("Choose a model to classify a blood cell image")
     
     image_file = st.file_uploader("Upload an image to classify:", type=["jpg", "jpeg", "png", "tiff"])
+    
+    selected_class = st.selectbox("Select a class:", CLASS_LABELS)
+    
     if st.button("Predict"):
         if image_file is not None:
             image = Image.open(image_file)
@@ -411,14 +401,18 @@ if selected == 'Prediction':
                 st.info("Monocytes are a type of white blood cell involved in the immune response to infections and inflammation.")
             elif predicted_class == "Neutrophil":
                 st.info("Neutrophils are a type of white blood cell involved in the immune response to bacterial and fungal infections.")
-        
-
+            elif predicted_class == "Immature granulocytes":
+                st.info("Immature granulocytes, including promyelocytes, myelocytes, and metamyelocytes, are early-stage white blood cells that are typically elevated in response to acute bacterial infections and inflammatory disorders.")
+            elif predicted_class == "Basophils":
+                st.info("Basophils are a type of white blood cell involved in the immune response against parasites and are also involved in the inflammatory response.")
+            elif predicted_class == "Platelet":
+                st.info("Platelets are small, colorless cell fragments in the blood that play a crucial role in blood clotting and the prevention of excessive bleeding.")
+            elif predicted_class == "Erythroblast":
+                st.info("Erythroblasts are immature red blood cells that are involved in the production of hemoglobin and the transportation of oxygen throughout the body.")
+    
     # Add some padding and styling elements to the selectbox and file uploader
     st.markdown('<style>div[role="listbox"] > div:nth-child(1) {padding: 10px; font-family: Arial, sans-serif;}</style>', unsafe_allow_html=True)
     st.markdown('<style>.css-1aya9p5 {font-family: Arial, sans-serif;}</style>', unsafe_allow_html=True)
-
-    # Close the main div
-    st.markdown('</div>', unsafe_allow_html=True)
                                                                         
 #------------------------------------------------------------------------------------------------------------------------------------------
 #Section Perspectives    
