@@ -156,11 +156,13 @@ if selected == 'E.D.A.':
             """
         )
         
+    # Display the dataframe   
     st.markdown(
     """
     An extract of the combined dataset with additional features gathered from the files:
     """
     )
+    
     df = pd.read_csv("dataframe_eda.csv", index_col=0)
     st.dataframe(df)
     
@@ -169,6 +171,7 @@ if selected == 'E.D.A.':
     The image size varied between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 for the 
                 continuous process.
                 """)
+    
    # Create scatterplot with Plotly
     fig = px.scatter(df, x='Width', y='Height', color='Origin', size='Height', symbol='Origin',
                      hover_data={'Shape': True, 'Luminosity' : True, 'Brightness' : True},
@@ -188,6 +191,9 @@ if selected == 'E.D.A.':
     The brightness is calculated by the RGB pixel distribution, which show different characteristics according to the classes. 
     """)
     st.image(img_EDA_02, caption = 'RGB pixel distribution of the images per class') 
+    
+    st.write('\n')
+    
     st.subheader('Luminance')
     st.markdown("""
     The luminance is calculated by the greyscale pixel distribution.
