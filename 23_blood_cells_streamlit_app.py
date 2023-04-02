@@ -20,7 +20,7 @@ from tensorflow.keras.models import load_model
 
 import requests
 import base64
-
+ 
 #------------------------------------------------------------------------------------------------------------------------------------------
 # Overall page configuration
 st.set_page_config(page_title="BCC", page_icon=":drop_of_blood:", layout="centered", initial_sidebar_state="auto", menu_items=None)
