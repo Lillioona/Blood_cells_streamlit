@@ -354,7 +354,7 @@ CLASS_LABELS = ['Basophil',
 
 #function to load model
 @st.cache(allow_output_mutation=True)
-def load_model():
+def load_dl_model():
     model = tf.keras.models.load_model(MODEL)
     return model
 
@@ -374,7 +374,7 @@ try:
 
     # Load the Keras model using custom_object_scope
     with tf.keras.utils.custom_object_scope(custom_objects):
-        model = load_model()
+        model = load_dl_model()
 
 except Exception as e:
     st.write(e)
