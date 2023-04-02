@@ -3,8 +3,8 @@ import streamlit as st
 import numpy as np
 import pickle
 import pandas as pd
-#import matplotlib.pyplot as plt
-#import seaborn as sns
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 from streamlit_option_menu import option_menu
 from os import listdir     
@@ -169,25 +169,25 @@ if selected == 'E.D.A.':
     st.image(img_EDA_01)
     
     # set plot style
-    #sns.set_style('darkgrid')
+    sns.set_style('darkgrid')
 
     # create plot
-    #figure, axis = plt.subplots(figsize=(8,8), facecolor="#0e1117")
-    #axis.set_facecolor("#0e1117")
-    #axis.set_xlim([351,599])
-    #axis.set_ylim([351,599])
-    #axis.set_xlabel('Width', color='white')
-    #axis.set_ylabel('Height', color='white')
-    #axis.spines['top'].set_visible(False)
-    #axis.spines['right'].set_visible(False)
-    #axis.set_title("Original image resolution", fontdict={'color': "white"}, size= 18, pad=25)
-    #axis.tick_params(colors="white", bottom=True, left=True)
-    #ax = sns.scatterplot(data=df, x='width', y='height',  hue='origin',
-    #                    palette='deep', size= 'origin', sizes=(100, 200))
-    #axis.legend(loc=(0.125,.82), frameon=True, fontsize="large")
+    figure, axis = plt.subplots(figsize=(8,8), facecolor="#0e1117")
+    axis.set_facecolor("#0e1117")
+    axis.set_xlim([351,599])
+    axis.set_ylim([351,599])
+    axis.set_xlabel('Width', color='white')
+    axis.set_ylabel('Height', color='white')
+    axis.spines['top'].set_visible(False)
+    axis.spines['right'].set_visible(False)
+    axis.set_title("Original image resolution", fontdict={'color': "white"}, size= 18, pad=25)
+    axis.tick_params(colors="white", bottom=True, left=True)
+    ax = sns.scatterplot(data=df, x='width', y='height',  hue='origin',
+                        palette='deep', size= 'origin', sizes=(100, 200))
+    axis.legend(loc=(0.125,.82), frameon=True, fontsize="large")
 
     # display plot in Streamlit
-    #st.pyplot(figure)
+    st.pyplot(figure)
     
     
     st.subheader('Brightness')
@@ -301,7 +301,6 @@ if selected == 'Modelisation':
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 # Necessary function and variables
-#MODEL_URL = "https://www.dropbox.com/s/hztf508d1b44ywu/Best_model_ft_5th_layer.h5?dl=1"
 MODEL = "Best_model_ft_5th_layer.h5"
 
 IMG_SIZE = (360,360) 
@@ -315,9 +314,9 @@ CLASS_LABELS = ['basophil',
                 'neutrophil',
                 'platelet']
 
+#function to load model
 @st.cache(allow_output_mutation=True)
 def load_model():
-    #model_file = BytesIO(requests.get(MODEL_URL).content)
     model = tf.keras.models.load_model(MODEL)
     return model
 
@@ -357,20 +356,7 @@ def predict(image):
         predictions = model.predict(tf.expand_dims(image, axis=0))[0]
         predicted_class = CLASS_LABELS[predictions.argmax()]
         confidence = predictions.max()
-        return predicted_class, confidence
-    
-  
-          #  col1, col2 = st.columns(2)
-            # load dataset 1
-       #     with col1:
-       #         file = st.file_uploader(label='Pick an image to test',accept_multiple_files=False)
-        #        prediction(file)
-            # load dataset 2
-        #    with col2:
-        #        st.write("Select images")
-
-        
-          
+        return predicted_class, confidence    
 
 # list all available images to make predicitions on (no images uploaded so far right?)   
 def list_images(directory, file_type):
@@ -382,18 +368,58 @@ def list_images(directory, file_type):
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 if selected == 'Prediction':
+    # Apply styling elements to the section
+    st.markdown("""
+    <style>
+        .main {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
+    # Apply the CSS class to the section
+    st.markdown('<div class="main">', unsafe_allow_html=True)
     st.header('Prediction')
     st.subheader("Choose a model to classify a blood cell image")
     
-    image_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
-    
-    if image_file is not None:
-        image = Image.open(image_file)
-        st.image(image, caption="Uploaded Image", use_column_width=True)
-        predicted_class, confidence = predict(image)
-        st.write(f"Predicted class: {predicted_class}")
-        st.write(f"Confidence: {confidence:.2f}")
+    image_file = st.file_uploader("Upload an image to classify:", type=["jpg", "jpeg", "png", "tiff])
+    if st.button("Predict"):
+        if image_file is not None:
+            image = Image.open(image_file)
+            st.image(image, caption="Uploaded Image", use_column_width=True)
+            predicted_class, confidence = predict(image)
+
+            col1, col2 = st.columns(2)
+            with col1:
+                st.markdown("##Predicted class:")
+                st.write(f"{predicted_class}")
+            with col2:
+                st.markdown("##Confidence score:")
+                st.write(f"{confidence:.2f}")
+                                                                        
+            # Display additional information about the predicted class
+            if predicted_class == "Eosinophil":
+                st.info("Eosinophils are a type of white blood cell involved in the immune response to parasites and allergies.")
+            elif predicted_class == "Lymphocyte":
+                st.info("Lymphocytes are a type of white blood cell involved in the immune response to infections and cancer.")
+            elif predicted_class == "Monocyte":
+                st.info("Monocytes are a type of white blood cell involved in the immune response to infections and inflammation.")
+            elif predicted_class == "Neutrophil":
+                st.info("Neutrophils are a type of white blood cell involved in the immune response to bacterial and fungal infections.")
         
+
+    # Add some padding and styling elements to the selectbox and file uploader
+    st.markdown('<style>div[role="listbox"] > div:nth-child(1) {padding: 10px; font-family: Arial, sans-serif;}</style>', unsafe_allow_html=True)
+    st.markdown('<style>.css-1aya9p5 {font-family: Arial, sans-serif;}</style>', unsafe_allow_html=True)
+
+    # Close the main div
+    st.markdown('</div>', unsafe_allow_html=True)
+                                                                        
 #------------------------------------------------------------------------------------------------------------------------------------------
 #Section Perspectives    
 if selected == 'Perspectives':
