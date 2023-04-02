@@ -46,7 +46,7 @@ Analysis_09_Amri = Image.open('images/analysis_09_Amri.png')
 Header = st.container()
 with Header:
     st.title('Automatic Blood Cell Recognition')
-
+ 
 # Horizontal menu
 selected = option_menu(None, ["Introduction", "E.D.A.", "Modelisation", 'Prediction', 'Perspectives', 'About'], 
     icons=["house-door", "bar-chart", "wrench", 'upload', 'search', 'info-circle'], 
