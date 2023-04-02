@@ -54,7 +54,7 @@ cell_09 = Image.open('images/Ra_Eos.jpg')
 cell_10 = Image.open('images/Ra_Neu.jpg')
 cell_11 = Image.open('images/Ra_LT.jpg')
 cell_12 = Image.open('images/Ra_Bas.jpg')
-hema= Image.open('Hematopoiesis.jpg')
+
 #------------------------------------------------------------------------------------------------------------------------------------------
 # Title of the Page
 Header = st.container()
