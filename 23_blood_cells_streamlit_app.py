@@ -170,8 +170,9 @@ if selected == 'E.D.A.':
                 continuous process.
                 """)
    # Create scatterplot with Plotly
-    fig = px.scatter(df, x='Width', y='Height', color='Origin', size='Origin',
-                     hover_data={'Width': True, 'Height': True, 'Origin': False})
+    fig = px.scatter(df, x='Width', y='Height', color='Origin', size=pd.to_numeric(df['Origin']),
+                     hover_data={'Shape': True, 'Luminosity' : True, 'Brightness' : True, ' Count' : True},
+                     hover_name="Origin")
 
     # Set axis labels and title
     fig.update_xaxes(title='Width')
