@@ -174,7 +174,7 @@ if selected == 'E.D.A.':
     #sns.set_style('darkgrid')
 
     # create plot
-    figure, axis = plt.subplots(figsize=(8,8), facecolor="#0e1117")
+    #figure, axis = plt.subplots(figsize=(8,8), facecolor="#0e1117")
     #axis.set_facecolor("#0e1117")
     #axis.set_xlim([351,599])
     #axis.set_ylim([351,599])
@@ -189,7 +189,7 @@ if selected == 'E.D.A.':
     #axis.legend(loc=(0.125,.82), frameon=True, fontsize="large")
 
     # display plot in Streamlit
-    fig_html = mpld3.fig_to_html(figure)
+    fig_html = mpld3.fig_to_html(ax)
     components.html(fig_html, height=600)
     
     
