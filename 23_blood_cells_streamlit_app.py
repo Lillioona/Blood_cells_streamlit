@@ -12,6 +12,7 @@ from streamlit_option_menu import option_menu
 from os import listdir     
 from PIL import Image, ImageOps
 from io import BytesIO
+import plotly.express as px
 
 import tensorflow as tf
 from tensorflow.keras.models import load_model
