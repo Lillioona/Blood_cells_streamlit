@@ -191,8 +191,8 @@ if selected == 'E.D.A.':
     # display plot in Streamlit
     fig_html = mpld3.fig_to_html(fig)
     #components.html(fig_html, height=600)
-    st.markdown(fig_html, unsafe_allow_html=True)
-    st.plotly(fig_html, unsafe_allow_html=True)
+    
+    st.pyplot(fig_html, unsafe_allow_html=True)
     
     st.subheader('Brightness')
     st.markdown("""
