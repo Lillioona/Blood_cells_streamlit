@@ -168,28 +168,19 @@ if selected == 'E.D.A.':
     The image size varied between the different datasets, as displayed in the following scatter plot. They were all resized to 360x360 for the 
                 continuous process.
                 """)
-    # create plot
-    fig, axis = plt.subplots(facecolor="#0e1117")
-    axis.set_facecolor("#0e1117")
-    axis.set_xlim([351,599])
-    axis.set_ylim([351,599])
-    axis.set_xlabel('Width', color='white')
-    axis.set_ylabel('Height', color='white')
-    axis.spines['top'].set_visible(False)
-    axis.spines['right'].set_visible(False)
-    axis.set_title("Original image resolution", fontdict={'color': "white"}, size= 18, pad=25)
-    axis.tick_params(colors="white", bottom=True, left=True)
+   # Create scatterplot with Plotly
+    fig = px.scatter(df, x='Width', y='Height', color='Origin', size='Origin',
+                     hover_data={'Width': True, 'Height': True, 'Origin': False})
 
-    # create scatterplot
-    sns.scatterplot(data=df, x='Width', y='Height',  hue='Origin',
-                    palette='deep', size= 'Origin', sizes=(100, 200))
-    axis.legend(loc=(0.125,.82), frameon=True, fontsize="large")
+    # Set axis labels and title
+    fig.update_xaxes(title='Width')
+    fig.update_yaxes(title='Height')
+    fig.update_layout(title='Original image resolution', title_font_size=18,
+                      plot_bgcolor="#0e1117", paper_bgcolor="#0e1117", font_color="white")
 
-    # convert plot to interactive format
-    fig_html = mpld3.fig_to_html(fig)
-
-    # display interactive plot in Streamlit
-    st.markdown(fig_html, unsafe_allow_html=True)
+    # Display plot in Streamlit
+    st.plotly_chart(fig)
+    
     #st.image(img_EDA_01)
     
     # set plot style
