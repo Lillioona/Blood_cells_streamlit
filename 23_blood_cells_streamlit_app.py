@@ -174,7 +174,7 @@ if selected == 'E.D.A.':
     #sns.set_style('darkgrid')
 
     # create plot
-    #figure, axis = plt.subplots(figsize=(8,8), facecolor="#0e1117")
+    fig, ax = plt.subplots()
     #axis.set_facecolor("#0e1117")
     #axis.set_xlim([351,599])
     #axis.set_ylim([351,599])
@@ -184,12 +184,12 @@ if selected == 'E.D.A.':
     #axis.spines['right'].set_visible(False)
     #axis.set_title("Original image resolution", fontdict={'color': "white"}, size= 18, pad=25)
     #axis.tick_params(colors="white", bottom=True, left=True)
-    ax = sns.scatterplot(data=df, x='Width', y='Height',  hue='Origin',
+    sns.scatterplot(data=df, x='Width', y='Height',  hue='Origin',
                         palette='deep', size= 'Origin', sizes=(100, 200))
     #axis.legend(loc=(0.125,.82), frameon=True, fontsize="large")
 
     # display plot in Streamlit
-    fig_html = mpld3.fig_to_html(ax)
+    fig_html = mpld3.fig_to_html(fig)
     components.html(fig_html, height=600)
     
     
