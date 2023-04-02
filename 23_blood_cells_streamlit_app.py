@@ -54,6 +54,7 @@ cell_09 = Image.open('images/Ra_Eos.jpg')
 cell_10 = Image.open('images/Ra_Neu.jpg')
 cell_11 = Image.open('images/Ra_LT.jpg')
 cell_12 = Image.open('images/Ra_Bas.jpg')
+hema= Image.open('Hematopoiesis.jpg')
 #------------------------------------------------------------------------------------------------------------------------------------------
 # Title of the Page
 Header = st.container()
@@ -466,10 +467,11 @@ if selected == 'Perspectives':
         And deep neural networks are revolutionizing the medical diagnosis process rapidly.
 
          - in reality,there is a wider spectrum of blood cell types, regarding to subcategories of immature granulocytes and other early stages of blood cell.
-         In this project the focus was to detect 8 different blood cells types.
+         In this project the focus was to detect 8 different blood cells types.""")
          
-         st.image(Hematopoiesis, caption = 'Overview of Hematopoiesis in human blood cells')
-
+         st.image(hema, caption = 'Overview of Hematopoiesis in human blood cells')
+            
+    st.markdown("""
         - the training data set should be as diverse and precise as possible to classify the blood cells.
 
         - different sources can considerly change the outcome of images, like the different medical devices, microscope and camera,
