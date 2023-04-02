@@ -42,7 +42,15 @@ Analysis_05_mix = Image.open('images/Analysis_05_mix.png')
 Analysis_07_Amri = Image.open('images/Analysis_07_Amri.png')
 Analysis_08_Amri = Image.open('images/Analysis_08_Amri.png')
 Analysis_09_Amri = Image.open('images/analysis_09_Amri.png')
-
+cell_01 = Image.open('images/M_Eos.jpg')
+cell_02 = Image.open('images/M_Neu.jpg')
+cell_03 = Image.open('images/M_LT.jpg')
+cell_04 = Image.open('images/B_Eos.jpg')
+cell_05 = Image.open('images/B_Neu.jpg')
+cell_06 = Image.open('images/B_LT.jpg')
+cell_07 = Image.open('images/Ra_Eos.jpg')
+cell_08 = Image.open('images/Ra_Neu.jpg')
+cell_09 = Image.open('images/Ra_LT.jpg')
 #------------------------------------------------------------------------------------------------------------------------------------------
 # Title of the Page
 Header = st.container()
@@ -209,6 +217,19 @@ if selected == 'E.D.A.':
 
     # Display the HTML file
     components.html(source_code, height=1000, width=1000, scrolling=True)
+    
+    st.subheader('Brightness')
+    
+    col1, col2, col3 = st.columns(3)
+    col1.image(cell_01, use_column_width=True, caption = 'Eosinophil, Munich')
+    col2.image(cell_02, use_column_width=True, caption = 'Neutrophil, Munich')
+    col3.image(cell_03, use_column_width=True, caption = 'Lymphocyte, Munich')
+    col1.image(cell_04, use_column_width=True, caption = 'Eosinophil, Barcelona')
+    col2.image(cell_05, use_column_width=True, caption = 'Neutrophil, Barcelona')
+    col3.image(cell_06, use_column_width=True, caption = 'Lymphocyte, Barcelona')
+    col1.image(cell_07, use_column_width=True, caption = 'Eosinophil, Raabin')
+    col2.image(cell_08, use_column_width=True, caption = 'Neutrophil, Raabin')
+    col3.image(cell_09, use_column_width=True, caption = 'Lymphocyte, Raabin') 
 
 #------------------------------------------------------------------------------------------------------------------------------------------    
 #Section Models     
