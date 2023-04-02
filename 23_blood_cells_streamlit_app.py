@@ -381,7 +381,7 @@ if selected == 'Prediction':
     with r_col:
         selected_class = st.selectbox("Select a class:", CLASS_LABELS)
         
-    if st.button("Predict")    
+    if st.button("Predict"):    
         if image_file is not None:
             image = Image.open(image_file)
         if image_file is None:
