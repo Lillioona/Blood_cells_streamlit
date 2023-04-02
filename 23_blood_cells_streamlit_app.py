@@ -166,7 +166,7 @@ if selected == 'E.D.A.':
     
     df = pd.read_csv("dataframe_eda.csv", index_col=0)
     
-    with st.expander("Show dataset:")
+    with st.expander("Show dataset:"):
         st.dataframe(df)
     
     st.subheader('Distribution of the image sizes')
